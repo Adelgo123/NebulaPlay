@@ -242,8 +242,10 @@ aside h2{
 .dots {
     display: flex;
     gap: 1.4em;
+    position: relative; /* necesario para el z-index de los hijos */
     justify-content: center;
-    margin-top: 1em;
+    margin-top: 1em; /* mover un poco hacia abajo */
+    z-index: 10; /* asegurar que estén sobre otros elementos */
 }
 
 .dot {
@@ -251,14 +253,19 @@ aside h2{
     color: white;
     cursor: pointer;
     opacity: 0.35;
-    transition: transform 0.4s ease, opacity 0.4s ease, color 0.4s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    position: relative; /* necesario para z-index */
+    z-index: 1; /* dots normales */
 }
 
 .dot.active {
     opacity: 1;
     color: #5A9C39;
-    transform: scale(1.8) translateY(-0.2em);
+    transform: scale(2) translateY(-0.2em); /* sobresale un poco hacia arriba */
+    z-index: 20; /* asegurarse que esté por encima */
 }
+
+
 
 /* CHEVRON */
 .chevron-next{

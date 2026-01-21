@@ -87,26 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Inicializamos miniaturas
             initGameGallery();
 
-            // DOTS: cambiar juego con transición
+            // DOTS: cambiar juego sin animación
             const dots = container.querySelectorAll('.dot');
             dots.forEach(dot => {
                 dot.addEventListener('click', e => {
                     e.preventDefault();
                     const newIndex = Number(dot.dataset.index);
                     if (newIndex === currentGameIndex) return;
-
-                    // Remover clase active del dot anterior
-                    const prevDot = container.querySelector('.dot.active');
-                    if (prevDot) prevDot.classList.remove('active');
-
                     currentGameIndex = newIndex;
                     renderGame(currentGameIndex);
-
-                    // Agregar clase active al nuevo dot con pequeño delay para animación
-                    const nextDot = container.querySelector(`.dot[data-index="${currentGameIndex}"]`);
-                    if (nextDot) {
-                        setTimeout(() => nextDot.classList.add('active'), 50);
-                    }
                 });
             });
 
@@ -114,18 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const chevron = container.querySelector('.chevron-next');
             if (chevron) {
                 chevron.addEventListener('click', () => {
-                    // Remover clase active del dot actual
-                    const prevDot = container.querySelector('.dot.active');
-                    if (prevDot) prevDot.classList.remove('active');
-
                     currentGameIndex = (currentGameIndex + 1) % gamesData.length;
                     renderGame(currentGameIndex);
-
-                    // Agregar clase active al nuevo dot con delay
-                    const nextDot = container.querySelector(`.dot[data-index="${currentGameIndex}"]`);
-                    if (nextDot) {
-                        setTimeout(() => nextDot.classList.add('active'), 50);
-                    }
 
                     // Aplicar animación al nuevo section después de renderizar
                     setTimeout(() => {
