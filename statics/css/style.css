@@ -62,6 +62,14 @@ video{
     mask-image: linear-gradient(black 30%,
     transparent);
 }
+.thumbnails .thumb{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #5A9C39;
+    display: inline-block;
+    margin-bottom: -1em;
+    cursor: pointer;
+}
 .juegos{
     position: relative;
     top: 4em;
