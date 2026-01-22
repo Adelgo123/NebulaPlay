@@ -8,6 +8,11 @@ main{
     background-color: black;
 }
 
+body::selection{
+    background-color: rgb(90, 156, 57);
+    color: black;
+}
+
 /* Animaciones */
 @keyframes show{
     from {
