@@ -5,12 +5,7 @@
     box-sizing: border-box;
     color: white;
 }
-main{
-    background-image: url(./img/bcregistro.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 88.7vh;
-}
+html{background-color: black;}
 body::selection{
     background-color: rgb(90, 156, 57);
     color: black;
@@ -43,7 +38,6 @@ h1,h3{
     margin: .5em 0em;
 }
 .cuerpoprincipal{
-    background-color: rgba(0, 0, 0, 0.8);
     color: white;
     width: 80vw;
     height: 60vh;
@@ -55,13 +49,11 @@ h1,h3{
     background-position: center;
     background-size: 12em;
     background-color: black;
-    border-radius: 50%;
     border: 1px solid #5A9C39;
     width: 222px;
     height: 222px;
     position: relative;
     box-shadow: 0 0 8px 1px #5A9C39;
-    left: 15em;
 }
 .dialogo p{
     background-color: black;
@@ -76,20 +68,25 @@ h1,h3{
     line-height: 120.066%; /* 15.609px */
     letter-spacing: 0.65px;
     position: relative;
-    left: 50%;
     bottom: 6.5em;
     border: 1px solid white;
 }
-form table{
-    width: 30%;
-    height: auto;
+form{
+    width: 50%;
+    height: 150%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1em;
+    border: 1px solid #5A9C39;
     justify-self: center;
+    overflow-y: scroll;
+    
+
 }
 td * p{
     font-size: 16px;
     margin-bottom: 1em;
 }
-input{
+input[type=text],[type=email],[type=password],[type=date]{
     background-color: black;
     color: white;
     border: 1px solid #5A9C39;
@@ -99,7 +96,19 @@ input{
     align-items: center;
     margin-inline-end: 2em;
 }
-input:focus{
+input[type=date]{width: 22%;}
+
+input[type=checkbox]{
+    color: black;
+    border: 1px solid #5A9C39;
+    padding: 0px .5em;
+    align-items: center;
+    margin-inline-end: 2em;
+    width: 20px;
+    height: 20px;
+}
+
+input[type=text],[type=email],[type=password],[type=date],[type=checkbox]:focus{
     box-shadow: 0 0 8px 1px #5A9C39;
     outline: none;
 }
