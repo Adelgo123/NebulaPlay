@@ -2,13 +2,15 @@
     font-family: "Roboto", sans-serif;
     padding: 0px;
     margin: 0px;
-}
-
-/*main{
-    background-color: black;
+    box-sizing: border-box;
     color: white;
 }
-*/
+main{
+    background-image: url(./img/bcregistro.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 88.7vh;
+}
 body::selection{
     background-color: rgb(90, 156, 57);
     color: black;
@@ -30,45 +32,92 @@ nav a{
     padding: 1em;
     margin-inline: 1em;
 }
-.fondo{
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    max-height: 100%;
+span{
+    display: flex; 
+    align-items: center; /* centra verticalmente */ 
+    gap: 8%; /* espacio entre imagen y texto */
 }
-main{
-    color: white;
-}
-h1{
+h1,h3{
     font-family: "Pixelify Sans", sans-serif;
+    font-size: 32px;
+    margin: .5em 0em;
 }
-
-table{
-    border: 1px solid white;
+.cuerpoprincipal{
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    width: 938px;
-    height: 408px;
+    width: 80vw;
+    height: 60vh;
     justify-self: center;
 }
 .contenedorfoto{
-    background-color: #070509;
-    border-radius: 100%;
+    background-image: url(./img/alien_esqueleto1_128.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12em;
+    background-color: black;
+    border-radius: 50%;
     border: 1px solid #5A9C39;
     width: 222px;
     height: 222px;
+    position: relative;
+    box-shadow: 0 0 8px 1px #5A9C39;
+    left: 15em;
 }
-
+.dialogo p{
+    background-color: black;
+    width: 345px;
+    justify-self: center;
+    padding-inline: 5px;
+    color: #FFF;
+    font-family: "Pixelify Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120.066%; /* 15.609px */
+    letter-spacing: 0.65px;
+    position: relative;
+    left: 50%;
+    bottom: 6.5em;
+    border: 1px solid white;
+}
+form table{
+    width: 30%;
+    height: auto;
+    justify-self: center;
+}
+td * p{
+    font-size: 16px;
+    margin-bottom: 1em;
+}
+input{
+    background-color: black;
+    color: white;
+    border: 1px solid #5A9C39;
+    width: 40%;
+    height: 2.5em;
+    padding: 0px .5em;
+    align-items: center;
+    margin-inline-end: 2em;
+}
+input:focus{
+    box-shadow: 0 0 8px 1px #5A9C39;
+    outline: none;
+}
+td img{
+    cursor: pointer;
+    position: relative;
+    right: 1em;
+    top: 10%;
+}
 footer{
     background-color: black;
     text-align: center;
-    height: 100%;
     align-content: center;
     padding: 1em;
-    position: relative;
-    top: 21.5em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
-
 footer a{
     color: white;
     text-decoration: none;

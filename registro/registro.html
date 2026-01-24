@@ -11,10 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="../../img/alien_base.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <img src="./img/bcregistro.png" alt="" class="fondo">
     <!-- Header -->
     <header>
         <nav>
@@ -28,27 +27,45 @@
         </nav>
     </header>
     <main>
-        <img src="../img/Chevron right.png" alt="Volver atras">
-        <h1>¡Únete ahora!</h1>
-        <table>
+        <span>
+            <img src="./img/atras.png" alt="Volver atras">
+            <h1>¡Únete ahora!</h1>
+        </span>
+        <table class="cuerpoprincipal">
             <tr>
                 <td>
-                    <div class="contenedorfoto">
-                        <img src="./img/alien_base128.png" alt="alien_base128">
-                    </div>
+                    <div class="contenedorfoto"></div>
                 </td>
                 <td>
-                    <table>
-                        
-                    </table>
-                    <h3>Nombre completo</h3>
-                    <p>Por favor, introduce tu nombre completo real. Usaremos esa información para devolverte la cuenta si alguna vez pierdes el acceso. Tu nombre nunca será publico.</p>
-                    <input type="text" name="" id="">
+                    <form action="">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h3>Nombre completo</h3>
+                                    <p>Por favor, introduce tu nombre completo real. Usaremos esa información para devolverte la cuenta si alguna vez pierdes el acceso. Tu nombre nunca será publico.</p>
+                                    <input type="text" name="" id="" placeholder="Escribe tu nombre" maxlength="15">
+                                    <input type="text" name="" id="" placeholder="Escribe tus apellidos" maxlength="15">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Nombre de usuario</h3>
+                                    <p>Este será el nombre de tu Alien, asegúrate de que esté disponible.</p>
+                                    <input type="text" name="" id="" placeholder="Escribe tu @" maxlength="15">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+                <td>
+                    <img src="./img/siguiente.png" alt="siguiente">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <p>¡Buenas creador! Estás a punto de darme vida...Empieza por darme un nombre con el que identificarme.</p>
+                    <span class="dialogo">
+                        <p>¡Buenas creador! Estás a punto de darme vida...Empieza por darme un nombre con el que identificarme.</p>
+                    </span>
                 </td>
             </tr>
         </table>
