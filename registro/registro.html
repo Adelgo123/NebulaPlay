@@ -34,10 +34,12 @@
         <table class="cuerpoprincipal">
             <tr>
                 <td>
-                    <div class="contenedorfoto"></div>
+                    <div class="contenedorfoto">
+                        <p>¡Buenas creador! Estás a punto de darme vida...Empieza por darme un nombre con el que identificarme.</p>
+                    </div>
                 </td>
                 <td>
-                    <form action="">
+                    <form action="http://localhost:5500/submit" method="post">
                         <table>
                             <tr>
                                 <td>
@@ -76,6 +78,23 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <h3>Género</h3>
+                                    <p>NebulaPlay no utilizará tu información personal para uso comercial.</p>
+                                    <select name="genero" id="genero">
+                                        <option value="1">Hombre</option>
+                                        <option value="2">Mujer</option>
+                                        <option value="3">Prefiero no decirlo</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Pais de residencia</h3>
+                                    <select id="pais"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <h3>Fecha de nacimiento</h3>
                                     <p>Por favor, introduce tu fecha de nacimiento real. Usaremos esa información para devolverte la cuenta si alguna vez pierdes el acceso. Tu fecha de nacimiento nunca será publica. Por favor, ten en cuenta que para jugar a NebulaPlay tienes que tener al menos 18 años.</p>
                                     <input type="date" name="" id="" placeholder="" required>
@@ -83,14 +102,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" name="" id="">
-                                    <p>Acepto Términos y Condiciones, nuestra Política de Privacidad y nuestra Política de Cookies.</p>
+                                    <input type="checkbox" name="terminos" id="terminos" required>
+                                    <label for="terminos">Acepto Términos y Condiciones, nuestra Política de Privacidad y nuestra Política de Cookies.</label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="checkbox" name="" id="">
-                                    <p>¡Quiero conocer todas las novedades, cotilleos y noticias de NebulaPlay!</p>
+                                    <input type="checkbox" name="novedades" id="novedades">
+                                    <label for="novedades">¡Quiero conocer todas las novedades, cotilleos y noticias de NebulaPlay!</label>
                                 </td>
                             </tr>
                             <tr>
@@ -100,31 +119,21 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="">Registrarme</a>
+                                    <div class="h-captcha" data-sitekey="e8244e38-a0a0-461a-add8-734c546cb1c6"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
+                                    <a href="" type="submit">Registrarme</a>
                                     <a href="">Ya tengo una cuenta</a>
                                 </td>
                             </tr>
                         </table>
                     </form>
                 </td>
-                <td>
-                    <img src="./img/siguiente.png" alt="siguiente">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="dialogo">
-                        <p>¡Buenas creador! Estás a punto de darme vida...Empieza por darme un nombre con el que identificarme.</p>
-                    </span>
-                </td>
             </tr>
         </table>
     </main>
-    <!-- Footer -->
     <footer>
         <a href="">Política de privacidad</a>
         <a href="">Sus opciones de privacidad</a>
@@ -134,5 +143,21 @@
         <a href="">Seguridad de productos</a>
         <a href="">Contactar</a>
     </footer>
+
+    <!-- Script de Captcha -->
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    
+    <!-- script de lista de paises del form -->
+<script>
+fetch("paises.json")
+  .then(res => res.json())
+  .then(data => {
+    const select = document.getElementById("pais");
+    select.innerHTML = '<option value="">Selecciona tu país</option>';
+    data.forEach(p => {
+      select.innerHTML += `<option value="${p.code}">${p.name}</option>`;
+    });
+  });
+</script>
 </body>
 </html>

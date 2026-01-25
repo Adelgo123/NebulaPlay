@@ -2,6 +2,7 @@
     font-family: "Roboto", sans-serif;
     padding: 0px;
     margin: 0px;
+    scroll-behavior: smooth;
 }
 
 main{
@@ -12,7 +13,13 @@ body::selection{
     background-color: rgb(90, 156, 57);
     color: black;
 }
-
+::-webkit-scrollbar{
+    background-color: black;
+}
+::-webkit-scrollbar-thumb, body::selection{
+    background-color: #5A9C39;
+    color: black;
+}
 /* Animaciones */
 @keyframes show{
     from {

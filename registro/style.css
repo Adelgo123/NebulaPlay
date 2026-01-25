@@ -5,9 +5,20 @@
     box-sizing: border-box;
     color: white;
 }
-html{background-color: black;}
-body::selection{
-    background-color: rgb(90, 156, 57);
+body{
+    background-color: black;
+    background-image: url(/registro/img/bcregistro.png);
+    background-repeat: no-repeat;
+    background-position: 60em 3em;
+    background-size: cover;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar{
+    background-color: black;
+}
+::-webkit-scrollbar-thumb, body::selection{
+    background-color: #5A9C39;
     color: black;
 }
 
@@ -27,66 +38,53 @@ nav a{
     padding: 1em;
     margin-inline: 1em;
 }
-span{
+main>span{
     display: flex; 
     align-items: center; /* centra verticalmente */ 
-    gap: 8%; /* espacio entre imagen y texto */
+    gap: 1%; /* espacio entre imagen y texto */
+    margin-left: 2em;
 }
 h1,h3{
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 32px;
     margin: .5em 0em;
 }
-.cuerpoprincipal{
-    color: white;
-    width: 80vw;
-    height: 60vh;
-    justify-self: center;
-}
 .contenedorfoto{
-    background-image: url(./img/alien_esqueleto1_128.png);
+    background-image: url(./img/alien_esqueleto128_8.png);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 1em 10em;
     background-size: 12em;
+    padding: 2em;
     background-color: black;
     border: 1px solid #5A9C39;
-    width: 222px;
-    height: 222px;
-    position: relative;
-    box-shadow: 0 0 8px 1px #5A9C39;
+    width: 600px;
+    height: 60%;
+    position: absolute;
+    bottom: 16.5%;
+    left: 5%;
 }
-.dialogo p{
-    background-color: black;
-    width: 345px;
-    justify-self: center;
-    padding-inline: 5px;
+.contenedorfoto p{
     color: #FFF;
     font-family: "Pixelify Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120.066%; /* 15.609px */
-    letter-spacing: 0.65px;
+    font-size: 1.17em;
     position: relative;
-    bottom: 6.5em;
-    border: 1px solid white;
+    user-select: none;
 }
 form{
-    width: 50%;
-    height: 150%;
+    width: 30%;
+    max-height: 45em;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 1em;
     border: 1px solid #5A9C39;
-    justify-self: center;
+    justify-self: right;
+    margin-right: 10em;
     overflow-y: scroll;
-    
-
+    scroll-behavior: smooth;
 }
 td * p{
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 1em;
 }
-input[type=text],[type=email],[type=password],[type=date]{
+input[type=text],[type=email],[type=password],[type=date],#genero,#pais{
     background-color: black;
     color: white;
     border: 1px solid #5A9C39;
@@ -103,20 +101,30 @@ input[type=checkbox]{
     border: 1px solid #5A9C39;
     padding: 0px .5em;
     align-items: center;
-    margin-inline-end: 2em;
+    margin-top: 1em;
     width: 20px;
     height: 20px;
 }
 
-input[type=text],[type=email],[type=password],[type=date],[type=checkbox]:focus{
+input[type=text]:focus,[type=email]:focus,[type=password]:focus,[type=date]:focus,[type=checkbox]:focus,#genero:focus,#pais:focus{
     box-shadow: 0 0 8px 1px #5A9C39;
     outline: none;
 }
-td img{
-    cursor: pointer;
-    position: relative;
-    right: 1em;
-    top: 10%;
+.h-captcha, a[type=submit],a[type=submit]+a{
+    margin-bottom: 1em;
+    justify-self: center;
+    display: flex;
+}
+a[type=submit]{
+    color: black;
+    text-decoration: none;
+    background-color: #5A9C39;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1em 2em;
+    display: flex;
+    width: 40%;
 }
 footer{
     background-color: black;
@@ -126,6 +134,7 @@ footer{
     position: absolute;
     bottom: 0;
     width: 100%;
+    
 }
 footer a{
     color: white;
