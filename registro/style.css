@@ -51,16 +51,10 @@ h1,h3{
 .contenedorfoto{
     background-image: url(./img/alien_esqueleto128_8.png);
     background-repeat: no-repeat;
-    background-position: 1em 10em;
-    background-size: 12em;
-    padding: 2em;
-    background-color: black;
-    border: 1px solid #5A9C39;
-    width: 600px;
-    height: 60%;
-    position: absolute;
-    bottom: 16.5%;
-    left: 5%;
+    background-position: center;
+    width: 188px;
+    height: 188px;
+    
 }
 .contenedorfoto p{
     color: #FFF;
@@ -69,6 +63,74 @@ h1,h3{
     position: relative;
     user-select: none;
 }
+
+.personalizar{
+    position: absolute;
+    margin-left: 10em;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #5A9C39;
+    border-collapse: collapse;
+}
+.selectores,.items{
+    max-height: 11.25em;
+    overflow-y: scroll;
+}
+.piel1,.piel2,.piel3,.piel4{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 6px solid rgba(0, 0, 0, 0.5);
+    margin: .2em;
+    cursor: pointer;
+}
+.tono1,.tono2,.tono3,.tono4,.tono5,.tono6,.tono7,.tono8,.tono9,.tono10,.tono11,.tono12,.tono13,.tono14,.tono15,.tono16{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 6px solid rgba(0, 0, 0, 0.5);
+    margin: .2em;
+    cursor: pointer;
+}
+/*Tonos*/
+.tono1{background-color: #457219;}
+.tono2{background-color: #3E8E41;}
+.tono3{background-color: #6FCF97;}
+.tono4{background-color: #A0E3B2;}
+.tono5{background-color: #5D3A9B;}
+.tono6{background-color: #7E57C2;}
+.tono7{background-color: #A66DD4;}
+.tono8{background-color: #CBA6F7;}
+.tono9{background-color: #2E7D9B;}
+.tono10{background-color: #4DD0E1;}
+.tono11{background-color: #81D4FA;}
+.tono12{background-color: #B2EBF2;}
+.tono13{background-color: #616161;}
+.tono14{background-color: #9E9E9E;}
+.tono15{background-color: #BDBDBD;}
+.tono16{background-color: #D4AF37;}
+
+.items_selector div p{
+    border: 1px solid #5A9C39;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 1.17em;
+    font-weight: bold;
+    padding: 1em 0em;
+    justify-content: center;
+    display: flex;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+}
+.items_selector div p:active{
+    background-color: #5A9C39;
+    color: black;
+}
+.personalizar td{
+    width: 10%;
+}
+
 form{
     width: 30%;
     max-height: 45em;
