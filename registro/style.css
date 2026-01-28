@@ -31,7 +31,7 @@ nav{
 nav a{
     display: inline-flex;
     position: relative;
-    left: 55%;
+    left: 53%;
     color: white;
     text-decoration: none;
     font-family: "Pixelify Sans", sans-serif;
@@ -72,16 +72,20 @@ h1,h3{
     border: 1px solid #5A9C39;
     border-collapse: collapse;
 }
-.selectores,.items{
+.selectores.items{
     max-height: 11.25em;
     overflow-y: scroll;
 }
-.piel1,.piel2,.piel3,.piel4{
-    width: 30px;
-    height: 30px;
+.piel1,.piel2,.piel3{
+    background-color: rgba(255, 255, 255, 0.5);
+    display: inline-flex;
     border-radius: 50%;
-    border: 6px solid rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    height: 3em;
     margin: .2em;
+    border: none;
     cursor: pointer;
 }
 .tono1,.tono2,.tono3,.tono4,.tono5,.tono6,.tono7,.tono8,.tono9,.tono10,.tono11,.tono12,.tono13,.tono14,.tono15,.tono16{
@@ -156,7 +160,7 @@ input[type=text],[type=email],[type=password],[type=date],#genero,#pais{
     align-items: center;
     margin-inline-end: 2em;
 }
-input[type=date]{width: 22%;}
+input[type=date]{width: 23%;}
 
 input[type=checkbox]{
     color: black;
@@ -177,7 +181,7 @@ input[type=text]:focus,[type=email]:focus,[type=password]:focus,[type=date]:focu
     justify-self: center;
     display: flex;
 }
-a[type=submit]{
+input[type=submit].submit{
     color: black;
     text-decoration: none;
     background-color: #5A9C39;
@@ -186,7 +190,14 @@ a[type=submit]{
     font-weight: bold;
     padding: 1em 2em;
     display: flex;
+    border: none;
     width: 40%;
+    justify-self: center;
+    cursor: pointer;
+}
+input[type=submit].submit + a{
+    display: flex;
+    justify-self: center;
 }
 footer{
     background-color: black;

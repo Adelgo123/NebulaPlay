@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NebulaPlay - Home</title>
+    <title>NebulaPlay - Inicio</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./statics/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,11 +26,11 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="">HOME</a>
-            <a href="">SHOP</a>
-            <a href="">CATALOG</a>
-            <a href="">ABOUT</a>
-            <a href="">CONTACT</a>
+            <a href="">INICIO</a>
+            <a href="#suscripciones">SUSCRIPCIONES</a>
+            <a href="#catalogo">CATÁLOGO</a>
+            <a href="#acercade">ACERCA DE</a>
+            <a href="#contactar">CONTACTO</a>
             <a href=""><img src="/img/User.png" alt="usuario"></a>
             <a href=""><img src="/img/language.png" alt="lenguaje"></a>
         </nav>
@@ -45,7 +45,7 @@
             Tus juegos, con la potencia de la nube. Juega con rendimiento en 
             cualquier lugar. Ya en streaming con servidores NebulaPlay, que se 
             están desplegando ahora mismo.</pre>
-            <a href="">Únete hoy mismo</a>
+            <a href="./registro/registro.html">Únete hoy mismo</a>
             <aside>
                 <table class="juegos">
                     <tr>
@@ -66,7 +66,7 @@
                 </table>
             </aside>
         </section>
-        <pre>
+        <pre id="catalogo">
             El futuro del gaming ya está aquí. NebulaPlay te ofrece un ecosistema completo de gestión y acceso a videojuegos en la nube,
             diseñado para que disfrutes sin barreras, con la máxima calidad y la comodidad de estar siempre conectado.
         </pre>
@@ -97,7 +97,7 @@
         <div id="games-container"></div>
 
         <!-- Suscripción -->
-        <section class="suscripcion">
+        <section class="suscripcion" id="suscripciones">
             <table>
                 <tr>
                     <td colspan="3">
@@ -122,7 +122,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="">Conecta y juega</a>
+                                        <a href="./registro/registro.html">Conecta y juega</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -154,7 +154,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="">Juega + preocúpate -</a>
+                                        <a href="./registro/registro.html">Juega + preocúpate -</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,7 +187,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="">Juega al máximo</a>
+                                        <a href="./registro/registro.html">Juega al máximo</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -226,7 +226,7 @@ Las tarjetas de regalo no son válidas para precios promocionales o de suscripci
         <table>
                 <tr>
                     <td>
-                        <a href="">Acerca de</a>
+                        <a href="" id="acercade">Acerca de</a>
                     </td>
                     <td>
                         <a href="">Recursos</a>
@@ -242,7 +242,7 @@ Las tarjetas de regalo no son válidas para precios promocionales o de suscripci
         <a href="">Accesibilidad</a>
         <a href="">Políticas de empresa</a>
         <a href="">Seguridad de productos</a>
-        <a href="">Contactar</a>
+        <a href="" id="contactar">Contactar</a>
     </footer>
 
     <!-- Scripts -->
