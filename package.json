@@ -2,5 +2,5 @@
   "name": "mi-servidor",
   "version": "1.0.0",
   "type": "module",
-  "main": "server.js"
+  "main": "./statics/js/mi-servidor/server.js"
 }

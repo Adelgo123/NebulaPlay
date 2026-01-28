@@ -98,35 +98,35 @@
         <table class="cuerpoprincipal">
             <tr>
                 <td>
-                    <form action="http://localhost:5500/submit" method="post">
+                    <form action="http://localhost:5500/post" method="post">
                         <table>
                             <tr>
                                 <td>
                                     <h3>Nombre completo</h3>
                                     <p>Por favor, introduce tu nombre completo real. Usaremos esa información para devolverte la cuenta si alguna vez pierdes el acceso. Tu nombre nunca será publico.</p>
-                                    <input type="text" name="" id="" placeholder="Escribe tu nombre" maxlength="15">
-                                    <input type="text" name="" id="" placeholder="Escribe tus apellidos" maxlength="15">
+                                    <input type="text" name="nombre" id="" placeholder="Escribe tu nombre" maxlength="15">
+                                    <input type="text" name="apellidos" id="" placeholder="Escribe tus apellidos" maxlength="15">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <h3>Nombre de usuario</h3>
                                     <p>Este será el nombre de tu Alien, asegúrate de que esté disponible.</p>
-                                    <input type="text" name="" id="" placeholder="Escribe tu @" maxlength="15">
+                                    <input type="text" name="usuario" id="" placeholder="Escribe tu @" maxlength="15">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <h3>Correo electrónico</h3>
                                     <p>Necesitarás usar este email para conectarte a NebulaPlay en el futuro. Por favor, utiliza un email que sea válido.</p>
-                                    <input type="email" name="" id="" placeholder="Escribe tu correo" maxlength="25">
+                                    <input type="email" name="correo" id="" placeholder="Escribe tu correo" maxlength="25">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <h3>Contraseña</h3>
                                     <p>Usa al menos 6 caracteres. Incluye al menos una letra y un número o un caracter especial.</p>
-                                    <input type="password" name="" id="" placeholder="***************" maxlength="20">
+                                    <input type="password" name="contraseña" id="" placeholder="***************" maxlength="20">
                                 </td>
                             </tr>
                             <tr>
@@ -156,7 +156,7 @@
                                 <td>
                                     <h3>Fecha de nacimiento</h3>
                                     <p>Por favor, introduce tu fecha de nacimiento real. Usaremos esa información para devolverte la cuenta si alguna vez pierdes el acceso. Tu fecha de nacimiento nunca será publica. Por favor, ten en cuenta que para jugar a NebulaPlay tienes que tener al menos 18 años.</p>
-                                    <input type="date" name="" id="" placeholder="" required>
+                                    <input type="date" name="nacimiento" id="" placeholder="" required>
                                 </td>
                             </tr>
                             <tr>
@@ -218,5 +218,6 @@ fetch("paises.json")
     });
   });
 </script>
+<script src="../statics/js/registro.js"></script>
 </body>
 </html>
