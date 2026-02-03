@@ -127,7 +127,7 @@ h1,h3{
     width: 100%;
     margin: 0;
 }
-.items_selector div p:active{
+.menu-section.active{
     background-color: #5A9C39;
     color: black;
 }

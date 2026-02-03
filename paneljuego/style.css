@@ -1,0 +1,242 @@
+*{
+    font-family: "Roboto", sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    color: white;
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
+
+body{
+    background-image:url(/paneljuego/img/background.png);
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+}
+
+body::selection{
+    background-color: rgb(90, 156, 57);
+    color: black;
+}
+::-webkit-scrollbar{
+    background-color: black;
+}
+::-webkit-scrollbar-thumb, body::selection{
+    background-color: #5A9C39;
+    color: black;
+}
+/* Animaciones */
+@keyframes show{
+    from {
+        opacity: 0;
+        scale: 25%;
+    }
+    to{
+        opacity: 1;
+        scale: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    0%{ opacity: 0; }
+    100%{ opacity: 1; }
+}
+
+/* Animación bonita al cambiar juego con la flecha */
+@keyframes slideFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.game-transition {
+    animation: slideFadeIn 0.6s ease forwards;
+}
+
+@keyframes dotFloat {
+    0% {
+        transform: translateY(-10px) scale(1.35);
+    }
+    50% {
+        transform: translateY(-16px) scale(1.4);
+    }
+    100% {
+        transform: translateY(-10px) scale(1.35);
+    }
+}
+
+nav{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 48px;
+    background-color: black;
+}
+nav a, nav input[type=text], nav select{
+    display: inline-flex;
+    position: relative;
+    left: 45%;
+    color: white;
+    text-decoration: none;
+    font-family: "Pixelify Sans", sans-serif;
+    padding: 1em;
+    margin-inline: 1em;
+}
+nav input[type=text]{
+    background-color: black;
+    border: 1px solid #5A9C39;
+    width: 10%;
+    height: 2.5em;
+    padding: 0px .5em;
+    align-items: center;
+}
+nav select{
+    background-color: #5A9C39;
+    border: none;
+    width: 9em;
+    height: 2.5em;
+    padding: 0px .5em;
+    align-items: center;
+    font-family: "Pixelify Sans", sans-serif;
+    color: black;
+    font-weight: bold;
+}
+select option{
+    color: white;
+    background-color: black;
+}
+
+h1,h3{
+    font-family: "Pixelify Sans", sans-serif;
+    margin: .5em 0em;
+    color: white;
+}
+input[type=text]:focus,select:focus{
+    box-shadow: 0 0 8px 1px #5A9C39;
+    outline: none;
+}
+.video{
+    background-color: black;
+    border: 1px solid #5A9C39;
+    width: 1216px;
+    display:flex;
+    align-items: center;
+    justify-self: center;
+    margin: 5em;
+    view-timeline-name: --revealing-image;
+    animation-name: show;
+    animation-fill-mode: both;
+    animation-timeline: --revealing-image;
+    animation-range: entry 25% cover 50%;
+}
+
+.video table{
+    border-collapse: collapse;
+    margin: 1em;
+    height: 452px;
+    border-image-source: linear-gradient(rgba(0, 0, 0, 0), #666666);
+    border-image-slice: 1;
+    border-image-width: 0.1rem;
+}
+
+aside h2{
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 32px;
+    margin-bottom: .5em;
+}
+
+.descripcion{
+    color: white;
+}
+
+.descripcion img{
+    display: flex;
+    justify-self: center;
+    margin-top: 3em;
+}
+
+.selectores{
+    text-align: center;
+    padding-top: 2.2em; /* más abajo */
+}
+
+/* DOTS */
+
+.dots {
+    display: flex;
+    gap: 1.4em;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.dot {
+    font-size: 3em; 
+    color: white;
+    cursor: pointer;
+    opacity: 0.35;
+    transition: transform 0.4s ease, opacity 0.4s ease, color 0.4s ease;
+}
+
+.dot.active {
+    opacity: 1;
+    color: #5A9C39;
+    transform: scale(1.8) translateY(-0.2em);
+}
+
+/* CHEVRON */
+.chevron-next{
+    cursor: pointer;
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+.chevron-next:hover{
+    transform: translateX(6px);
+    opacity: .8;
+}
+
+.s1{ bottom: .3em; }
+
+td * img{
+    display: inline-block;
+    justify-self: center;
+    margin: -.7em;
+}
+.descripcion a{
+    background-color: #5A9C39;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight:700;
+    font-family: "Pixelify Sans", sans-serif;
+    display: block;
+    justify-self: center;
+    text-align: center;
+    width: 280px;
+    border: 1px solid #5A9C39;
+    cursor: pointer;
+    margin-top: 2em;
+    padding: 1em;
+}
+
+footer{
+    background-color: black;
+    text-align: center;
+    height: 100%;
+    align-content: center;
+    margin-bottom: 2em;
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    margin-inline: 2em;
+
+}

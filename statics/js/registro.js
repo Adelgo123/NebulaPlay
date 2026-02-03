@@ -30,3 +30,19 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   }
 });
 
+//Menu de secciones
+
+const section = document.querySelectorAll('items_selector');
+
+section.forEach(section => {
+  section.addEventListener("click", () => {
+
+    // quitar active a todas
+    section.forEach(s => s.classList.remove("active"));
+
+    // activar la clicada
+    section.classList.add("active");
+
+    console.log("active:", section.dataset.section);
+  });
+});
