@@ -5,7 +5,6 @@
     box-sizing: border-box;
     color: white;
     scroll-behavior: smooth;
-    overflow: hidden;
 }
 
 body{
@@ -78,7 +77,7 @@ nav{
     height: 48px;
     background-color: black;
 }
-nav a, nav input[type=text], nav select{
+nav a, nav input[type=text]{
     display: inline-flex;
     position: relative;
     left: 45%;
@@ -96,20 +95,14 @@ nav input[type=text]{
     padding: 0px .5em;
     align-items: center;
 }
-nav select{
+nav input+a{
     background-color: #5A9C39;
-    border: none;
-    width: 9em;
-    height: 2.5em;
-    padding: 0px .5em;
+    width: 6em;
+    height: 2em;
     align-items: center;
     font-family: "Pixelify Sans", sans-serif;
     color: black;
     font-weight: bold;
-}
-select option{
-    color: white;
-    background-color: black;
 }
 
 h1,h3{
@@ -128,7 +121,7 @@ input[type=text]:focus,select:focus{
     display:flex;
     align-items: center;
     justify-self: center;
-    margin: 5em;
+    margin: 5em 5em 1em 5em;
     view-timeline-name: --revealing-image;
     animation-name: show;
     animation-fill-mode: both;
@@ -238,5 +231,73 @@ footer a{
     font-size: 12px;
     font-weight: 600;
     margin-inline: 2em;
+}
 
+/*carrousel */
+/* Slideshow container */
+.slideshow-container {
+  max-width: 50%;
+  position: relative;
+  margin: 2em auto 2em;
+  padding: 3%;
+  background-color: black;
+  border: 1px solid #5A9C39;
+  overflow: hidden;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+.mySlides:first-child {
+  display: block;
+}
+
+.mySlides img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain; /* NO recorta, ajusta */
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev {left: 0;}
+
+/* Number text (1/6 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }

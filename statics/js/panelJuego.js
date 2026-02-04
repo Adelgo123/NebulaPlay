@@ -44,30 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </tr>
                             </table>
                         </td>
-
-                        <td>
-                            <table>
-                                ${game.thumbnails.map((thumb, i) => `
-                                    <tr>
-                                        <td class="thumbnails">
-                                            <img 
-                                                src="${thumb}" 
-                                                width="30" 
-                                                class="thumb"
-                                                ${game.thumbnailVideos[i] ? `data-video="${game.thumbnailVideos[i]}"` : ""}>
-                                        </td>
-                                    </tr>
-                                `).join('')}
-                                <tr>
-                                    <td class="thumbnails">
-                                        <img 
-                                            src="/img/Chevron right.png"
-                                            width="48"
-                                            class="chevron-next">
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
                     </tr>
                 </table>
 
@@ -82,6 +58,45 @@ document.addEventListener('DOMContentLoaded', () => {
                     <a href="./registro/registro.html">Jugar ahora</a>
                 </aside>
             </section>
+
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 6</div>
+                    <img src="../../paneljuego/img/sh4_1.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 6</div>
+                    <img src="../../paneljuego/img/sh4_2.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 6</div>
+                    <img src="../../paneljuego/img/sh4_3.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 6</div>
+                    <img src="../../paneljuego/img/sh4_4.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 6</div>
+                    <img src="../../paneljuego/img/sh4_5.jpg" style="width:100%">
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">6 / 6</div>
+                    <img src="../../paneljuego/img/sh4_6.jpg" style="width:100%">
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
             `;
 
             // Inicializamos miniaturas
@@ -148,3 +163,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render inicial
     renderGame(currentGameIndex);
 });
+
+//carrousel
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+}
