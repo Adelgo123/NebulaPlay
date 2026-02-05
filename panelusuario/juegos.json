@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "titulo": "Silent Hill 4: The Room",
+    "imagen": "./img/sh4.png"
+  },
+  {
+    "id": 2,
+    "titulo": "NieR:Automata™",
+    "imagen": "./img/nier.png"
+  },
+  {
+    "id": 3,
+    "titulo": "Danganronpa Decadence",
+    "imagen": "./img/danganronpa.png"
+  },
+  {
+    "id": 4,
+    "titulo": "GTA V Grand Theft Auto V",
+    "imagen": "./img/gta.png"
+  }
+]

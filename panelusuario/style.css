@@ -5,6 +5,7 @@
     box-sizing: border-box;
     color: white;
     scroll-behavior: smooth;
+    
 }
 
 body{
@@ -12,6 +13,7 @@ body{
     display: grid;
     min-height: 100dvh;
     grid-template-rows: auto 1fr auto;
+    overflow-x: hidden;
 }
 
 body::selection{
@@ -104,6 +106,44 @@ nav input+a{
     color: black;
     font-weight: bold;
 }
+
+.juego img {
+  width: 180px;        /* Ajusta el tamaño que quieras */
+  height: 260px;       /* Mantén proporción tipo portada */
+  object-fit: cover;   /* Recorta sin deformar */
+  border-radius: 8px;  /* Estilo más limpio */
+}
+.carrusel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+}
+
+.carrusel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carrusel::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.juego {
+  flex: 0 0 auto; /* Importante para que no se estiren */
+  text-align: center;
+  color: white;
+  width: 180px; /* Igual que la imagen */
+}
+.juego img{
+    cursor: pointer; 
+    transition: transform 0.2s ease;
+}
+.juego img:hover { 
+    transform: scale(1.05); 
+}
+
 /*Contenido de video cogido del index principal*/
 .video{
     width: 1216px;
@@ -116,6 +156,8 @@ nav input+a{
     animation-fill-mode: both;
     animation-timeline: --revealing-image;
     animation-range: entry 25% cover 50%;
+    position: relative;
+    top: -15%;
 }
 
 .video table{

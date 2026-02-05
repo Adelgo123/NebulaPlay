@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Leer ID de la URL
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("id");
+
+    // 2. Buscar el índice del juego dentro de gamePanel
     let currentGameIndex = 0;
+    if (gameId) {
+        const index = gamePanel.findIndex(g => g.id == gameId);
+        if (index !== -1) {
+            currentGameIndex = index;
+        }
+    }
+
     const container = document.getElementById('panel-juego');
 
     function renderGame(index) {
