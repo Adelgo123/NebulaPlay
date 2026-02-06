@@ -1,24 +1,35 @@
 import express from "express";
 import mongoose from "mongoose";
-import fetch from "node-fetch";
 import path from "path";
 import { fileURLToPath } from "url";
+import fetch from "node-fetch";
 
-// ES module fix para __dirname
+// Importar rutas de autenticación
+import authRoutes from "../../../mongodb/src/routes/auth.js"; // Ajusta si es necesario
+
+const app = express();
+
+// ES module fix
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const port = 3000;
-const app = express();
+// Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, "../../..")));
 
-// Middlewares
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Rutas de autenticación
+app.use("/api/auth", authRoutes);
 
-// Ruta del captcha
+// Conexión a MongoDB
+mongoose
+  .connect("mongodb://localhost:27017/NebulaPlay")
+  .then(() => console.log("MongoDB conectado"))
+  .catch(err => console.error(err));
+
+// Captcha
 app.post("/submit", async (req, res) => {
   const token = req.body["h-captcha-response"];
 
@@ -31,47 +42,42 @@ app.post("/submit", async (req, res) => {
     })
   });
 
-  const data = await result.json();
+  const usuarios = await result.json();
 
-  if (data.success) {
+  if (usuarios.success) {
     res.send("Verificación correcta");
   } else {
     res.send("Verificación fallida");
   }
 });
 
-// Rutas de autenticación
-import authRoutes from "../../../mongodb/src/routes/auth.js";
-app.use("/api/auth", authRoutes);
-
-// Conexión a MongoDB
-mongoose
-  .connect("mongodb://localhost:27017/NebulaPlay")
-  .then(() => console.log("MongoDB conectado"))
-  .catch(err => console.error(err));
-
-app.get("/", (req, res) => {
-  res.send("Base de datos");
-});
-
-// Formulario
+// Modelo de usuario
 const userSchema = new mongoose.Schema({
   nombre: String,
   apellidos: String,
   usuario: String,
-  correo: String
+  correo: String,
+  contraseña: String,
+  genero: String,
+  pais: String,
+  fecha_nacimiento: Date
 });
 
-const Users = mongoose.model("data", userSchema);
+const Users = mongoose.model("usuarios", userSchema);
 
+// Ruta para guardar formulario
 app.post("/post", async (req, res) => {
-  const { nombre, apellidos, usuario, correo } = req.body;
+  const { nombre, apellidos, usuario, correo, contraseña, genero, pais, fecha_nacimiento } = req.body;
 
   const user = new Users({
     nombre,
     apellidos,
     usuario,
-    correo
+    correo,
+    contraseña,
+    genero,
+    pais,
+    fecha_nacimiento
   });
 
   await user.save();
@@ -79,7 +85,12 @@ app.post("/post", async (req, res) => {
   res.send("Formulario enviado correctamente");
 });
 
+// Ruta raíz
+app.get("/", (req, res) => {
+  res.send("Base de datos");
+});
+
 // Iniciar servidor
 app.listen(3000, () => {
-  console.log(`Servidor corriendo en http://localhost:${3000}`);
+  console.log("Servidor corriendo en http://localhost:3000");
 });
