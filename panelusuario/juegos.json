@@ -18,5 +18,10 @@
     "id": 4,
     "titulo": "GTA V Grand Theft Auto V",
     "imagen": "./img/gta.png"
+  },
+  {
+    "id": 5,
+    "titulo": "The Legend of Zelda: Breath of the Wild",
+    "imagen": "./img/zelda.png"
   }
 ]

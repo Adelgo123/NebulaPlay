@@ -6,7 +6,6 @@ const gamePanel = [
         description: "Silent Hill 4: The Room narra la pesadilla de Henry Townshend, un hombre que despierta atrapado en su apartamento sin posibilidad de salir. Cuando un misterioso agujero aparece en su baño, descubre que lo conecta con mundos retorcidos marcados por la violencia y el pasado de un asesino ritual. A medida que atraviesa estos escenarios, Henry intenta desentrañar el origen de su encierro y la oscura fuerza que lo persigue, mientras la frontera entre su hogar y el horror se vuelve cada vez más delgada.",
         modelviewer:"../../paneljuego/models/sh1_case.glb",
         thumbnails: [
-            "../paneljuego/img/sh4_0.jpg",
             "../paneljuego/img/sh4_1.jpg",
             "../paneljuego/img/sh4_2.jpg",
             "../paneljuego/img/sh4_3.jpg",
@@ -35,10 +34,10 @@ const gamePanel = [
         description: "Danganronpa Decadence reúne los tres juegos principales de la saga en una colección donde estudiantes atrapados deben resolver asesinatos y sobrevivir a juicios llenos de engaños, giros inesperados y tensión psicológica.",
         modelviewer:"../../paneljuego/models/danganronpa_case.glb",
         thumbnails: [
-            "../paneljuego/img/nier_1.jpg",
-            "../paneljuego/img/nier_2.jpg",
-            "../paneljuego/img/nier_3.jpg",
-            "../paneljuego/img/nier_4.jpg"
+            "../paneljuego/img/danganronpa_1.jpg",
+            "../paneljuego/img/danganronpa_2.jpg",
+            "../paneljuego/img/danganronpa_3.jpg",
+            "../paneljuego/img/danganronpa_4.jpg"
         ],
         posterImage: "../../paneljuego/img/danganronpacover.png"
     },
@@ -48,11 +47,27 @@ const gamePanel = [
         description: "Disfruta de los superventas del entretenimiento Grand Theft Auto V y Grand Theft Auto Online, ahora mejorados para una nueva generación, con impresionantes gráficos, carga más rápida, audio 3D y mucho más, además de contenido exclusivo para los jugadores de GTA Online.",
         modelviewer:"../../paneljuego/models/gta_case.glb",
         thumbnails: [
-            "../paneljuego/img/nier_1.jpg",
-            "../paneljuego/img/nier_2.jpg",
-            "../paneljuego/img/nier_3.jpg",
-            "../paneljuego/img/nier_4.jpg"
+            "../paneljuego/img/gta_1.jpg",
+            "../paneljuego/img/gta_2.jpg",
+            "../paneljuego/img/gta_3.jpg",
+            "../paneljuego/img/gta_4.jpg",
+            "../paneljuego/img/gta_5.jpg",
+            "../paneljuego/img/gta_6.jpg"
         ],
         posterImage: "../../paneljuego/img/gtacover.png"
+    },
+    {
+        id: "5",
+        title: "The Legend of Zelda: Breath of the Wild",
+        description: "The Legend of Zelda: Breath of the Wild te sumergirá en un mundo de descubrimiento con un impresionante estilo artístico similar a The Wind Waker o Skyward Sword, una cautivadora banda sonora y una intrigante y melancólica historia. Despierta tras un siglo de letargo, adéntrate en el Hyrule más amplio y abierto jamás creado por las tres grandes Diosas y forja tu propio camino con el orden y aventuras que quieras.",
+        modelviewer:"../../paneljuego/models/zelda_case.glb",
+        thumbnails: [
+            "../paneljuego/img/zelda_1.jpg",
+            "../paneljuego/img/zelda_2.jpg",
+            "../paneljuego/img/zelda_3.jpg",
+            "../paneljuego/img/zelda_4.jpg",
+            "../paneljuego/img/zelda_5.jpg",
+        ],
+        posterImage: "../../paneljuego/img/zeldacover.png"
     }
 ];

@@ -72,44 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </aside>
             </section>
 
-                <!-- Slideshow container -->
                 <div class="slideshow-container">
+    ${game.thumbnails.map((img, i) => `
+        <div class="mySlides fade">
+            <div class="numbertext">${i + 1} / ${game.thumbnails.length}</div>
+            <img src="${img}" style="width:100%">
+        </div>
+    `).join('')}
 
-                <!-- Full-width images with number and caption text -->
-                <div class="mySlides fade">
-                    <div class="numbertext">1 / 6</div>
-                    <img src="../../paneljuego/img/sh4_1.jpg" style="width:100%">
-                </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
 
-                <div class="mySlides fade">
-                    <div class="numbertext">2 / 6</div>
-                    <img src="../../paneljuego/img/sh4_2.jpg" style="width:100%">
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">3 / 6</div>
-                    <img src="../../paneljuego/img/sh4_3.jpg" style="width:100%">
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">4 / 6</div>
-                    <img src="../../paneljuego/img/sh4_4.jpg" style="width:100%">
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">5 / 6</div>
-                    <img src="../../paneljuego/img/sh4_5.jpg" style="width:100%">
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">6 / 6</div>
-                    <img src="../../paneljuego/img/sh4_6.jpg" style="width:100%">
-                </div>
-
-                <!-- Next and previous buttons -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                </div>
             `;
 
             // Inicializamos miniaturas

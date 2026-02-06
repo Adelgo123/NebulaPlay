@@ -110,7 +110,7 @@ h1,h3{
     margin: .5em 0em;
     color: white;
 }
-input[type=text]:focus,select:focus{
+input[type=text]:focus{
     box-shadow: 0 0 8px 1px #5A9C39;
     outline: none;
 }
