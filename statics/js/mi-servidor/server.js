@@ -95,3 +95,9 @@ app.listen(3000, () => {
   console.log("Servidor corriendo en http://localhost:3000");
 });
 
+
+document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    // validar aquí...
+    window.location.href = "./panelusuario/index.html";
+});
