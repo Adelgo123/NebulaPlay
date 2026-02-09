@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 import fetch from "node-fetch";
 
 // Importar rutas de autenticación
-import authRoutes from "../../../mongodb/src/routes/auth.js"; // Ajusta si es necesario
+import authRoutes from "../../../mongodb/src/routes/auth.js";
 
 const app = express();
 
@@ -17,7 +17,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Servir archivos estáticos
+// Servir archivos estáticos (tu frontend)
 app.use(express.static(path.join(__dirname, "../../..")));
 
 // Rutas de autenticación
@@ -29,7 +29,9 @@ mongoose
   .then(() => console.log("MongoDB conectado"))
   .catch(err => console.error(err));
 
-// Captcha
+// -------------------------
+// CAPTCHA (lo dejo igual)
+// -------------------------
 app.post("/submit", async (req, res) => {
   const token = req.body["h-captcha-response"];
 
@@ -51,53 +53,16 @@ app.post("/submit", async (req, res) => {
   }
 });
 
-// Modelo de usuario
-const userSchema = new mongoose.Schema({
-  nombre: String,
-  apellidos: String,
-  usuario: String,
-  correo: String,
-  contraseña: String,
-  genero: String,
-  pais: String,
-  fecha_nacimiento: Date
-});
-
-const Users = mongoose.model("usuarios", userSchema);
-
-// Ruta para guardar formulario
-app.post("/post", async (req, res) => {
-  const { nombre, apellidos, usuario, correo, contraseña, genero, pais, fecha_nacimiento } = req.body;
-
-  const user = new Users({
-    nombre,
-    apellidos,
-    usuario,
-    correo,
-    contraseña,
-    genero,
-    pais,
-    fecha_nacimiento
-  });
-
-  await user.save();
-  console.log(user);
-  res.send("Formulario enviado correctamente");
-});
+// -------------------------
+// ELIMINADO: /post y modelo usuarios
+// -------------------------
 
 // Ruta raíz
 app.get("/", (req, res) => {
-  res.send("Base de datos");
+  res.send("Servidor funcionando");
 });
 
 // Iniciar servidor
 app.listen(3000, () => {
   console.log("Servidor corriendo en http://localhost:3000");
-});
-
-
-document.getElementById("login-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    // validar aquí...
-    window.location.href = "./panelusuario/index.html";
 });

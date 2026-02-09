@@ -11,10 +11,10 @@ const AvatarSchema = new mongoose.Schema({
 }, { _id: false });
 
 const UserSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
+  correo: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
   avatar: AvatarSchema,
   createdAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.model("user", UserSchema);
+export default mongoose.model("User", UserSchema);
