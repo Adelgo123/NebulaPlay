@@ -9,25 +9,25 @@ const router = express.Router();
 // -------------------------
 router.post("/register", async (req, res) => {
   try {
-    const { correo, contraseña, avatar } = req.body;
+    const { email, password, avatar } = req.body;
 
     // Validación SIN avatar obligatorio
-    if (!correo || !contraseña) {
+    if (!email || !password) {
       return res.status(400).json({ error: "Datos incompletos" });
     }
 
     // Comprobar si ya existe
-    const exists = await User.findOne({ correo });
+    const exists = await User.findOne({ email });
     if (exists) {
       return res.status(409).json({ error: "Usuario ya existe" });
     }
 
-    // Encriptar contraseña
-    const passwordHash = await bcrypt.hash(contraseña, 10);
+    // Encriptar password
+    const passwordHash = await bcrypt.hash(password, 10);
 
     // Crear usuario (avatar opcional)
     const user = await User.create({
-      correo,
+      email,
       passwordHash,
       avatar: avatar || {}   // avatar vacío si no se envía
     });
@@ -48,18 +48,18 @@ router.post("/register", async (req, res) => {
 // -------------------------
 router.post("/login", async (req, res) => {
   try {
-    const { correo, contraseña } = req.body;
+    const { email, password } = req.body;
 
-    if (!correo || !contraseña) {
+    if (!email || !password) {
       return res.status(400).json({ error: "Datos incompletos" });
     }
 
-    const user = await User.findOne({ correo });
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ error: "Usuario no encontrado" });
     }
 
-    const passwordMatch = await bcrypt.compare(contraseña, user.passwordHash);
+    const passwordMatch = await bcrypt.compare(password, user.passwordHash);
     if (!passwordMatch) {
       return res.status(401).json({ error: "Contraseña incorrecta" });
     }

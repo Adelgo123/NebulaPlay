@@ -11,7 +11,7 @@ const AvatarSchema = new mongoose.Schema({
 }, { _id: false });
 
 const UserSchema = new mongoose.Schema({
-  correo: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
   avatar: AvatarSchema,
   createdAt: { type: Date, default: Date.now }

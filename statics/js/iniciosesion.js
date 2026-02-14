@@ -43,15 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const correo = loginForm.querySelector('input[name="correo"]').value.trim();
-        const contraseña = loginForm.querySelector('input[name="contraseña"]').value.trim();
+        const email = loginForm.querySelector('input[name="email"]').value.trim();
+        const password = loginForm.querySelector('input[name="password"]').value.trim();
 
-        if (!correo || !contraseña) {
+        if (!email || !password) {
             alert("Por favor, completa todos los campos");
             return;
         }
 
-        const datos = { correo, contraseña };
+        const datos = { email, password };
 
         try {
             const respuesta = await fetch("/api/auth/login", {
