@@ -33,13 +33,15 @@
         </span>
         <table class="personalizar" border="1">
             <tr><td colspan="3" align="center"><h3>Personaliza tu Alien</h3></td></tr>
-            <tr><td class="contenedorfoto"></td>
-                <td>
-                    <div class="items">
-                        <button class="piel1"><img src="/registro/img/Personalizar Alien/Pieles y Tonos/Piel1/tono1.png" alt=""></button>
-                        <button class="piel2"><img src="/registro/img/Personalizar Alien/Pieles y Tonos/Piel2/p2t1_32b.png" alt=""></button>
-                        <button class="piel3"><img src="/registro/img/Personalizar Alien/Pieles y Tonos/Piel3/p3_t1_32b.png" alt=""></button>
+            <tr><td class="contenedorfoto">
+                    <div class="avatar-wrapper">
+                        <img id="avatar-piel" class="layer" src="../registro/img/Personalizar Alien/Pieles y Tonos/Piel1/tono1.png">
+                        <img id="avatar-ojos" class="layer" src="/registro/img/Personalizar Alien/Ojos y Tonos/Ojos1/ojos1.png">
                     </div>
+                </td>
+
+                <td>
+                    <div id="items-container" class="items"></div>
                 </td>
                 <td rowspan="2" class="items_selector">
                     <div class="menu-section piel active" data-section="piel"><p>Piel</p></div>
@@ -50,7 +52,7 @@
                     <div class="menu-section complementos" data-section="complementos"><p>Complementos</p></div>
                 </td>
         </tr>
-            <tr><td><p>¡Buenas creador! Estás a punto de darme vida...Empieza por darme un nombre con el que identificarme.</p></td>
+            <tr><td><p id="texto-bienvenida"></p></td>
             <td>
                 <div class="selectores">
                         <button class="tono1"></button>

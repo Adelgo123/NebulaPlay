@@ -48,13 +48,27 @@ h1,h3{
     font-family: "Pixelify Sans", sans-serif;
     margin: .5em 0em;
 }
-.contenedorfoto{
-    background-image: url(./img/alien_esqueleto128_8.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 188px;
-    height: 188px;
-    
+
+.avatar-wrapper {
+    position: relative;
+    width: 128px;   /* ajusta al tamaño de tu sprite */
+    height: 128px;  /* ajusta al tamaño de tu sprite */
+    justify-self: center;
+}
+
+.avatar-wrapper .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    image-rendering: pixelated; /* para que no se vea borroso */
+}
+
+#avatar-piel, #avatar-ojos{
+    /* Escalado */
+    width: 128px; /* Ejemplo: 8x más grande */
+    height: auto; /* Mantener proporción */
+    display: flex;
+    justify-self: center;
 }
 .contenedorfoto p{
     color: #FFF;
@@ -76,7 +90,7 @@ h1,h3{
     max-height: 11.25em;
     overflow-y: scroll;
 }
-.piel1,.piel2,.piel3{
+.piel1,.piel2,.piel3,.btn-ojos{
     background-color: rgba(255, 255, 255, 0.5);
     display: inline-flex;
     border-radius: 50%;
@@ -113,6 +127,27 @@ h1,h3{
 .tono14{background-color: #9E9E9E;}
 .tono15{background-color: #BDBDBD;}
 .tono16{background-color: #D4AF37;}
+
+.avatar-wrapper {
+    position: relative;
+    width: 128px;   /* ajusta si tu sprite es más grande */
+    height: 128px;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    image-rendering: pixelated;
+}
+
 
 .items_selector div p{
     border: 1px solid #5A9C39;
@@ -217,3 +252,12 @@ footer a{
     margin-inline: 2em;
 }
 
+#texto-bienvenida {
+    padding: 1em;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    width: fit-content;
+    animation: cursorBlink 0.7s infinite;
+}
