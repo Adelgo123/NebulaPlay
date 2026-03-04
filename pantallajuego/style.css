@@ -1,0 +1,101 @@
+*{
+    font-family: "Roboto", sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    color: white;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: #040603;
+}
+
+body::selection{
+    background-color: rgb(90, 156, 57);
+    color: black;
+}
+::-webkit-scrollbar{
+    background-color: black;
+}
+::-webkit-scrollbar-thumb, body::selection{
+    background-color: #5A9C39;
+    color: black;
+}
+
+nav{
+    height: auto;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    flex-flow: wrap;
+}
+nav a, nav input[type=text]{
+    display: inline-flex;
+    color: white;
+    text-decoration: none;
+    font-family: "Pixelify Sans", sans-serif;
+    padding: 1em;
+    margin-inline: 1em;
+}
+nav input[type=text]{
+    background-color: black;
+    border: 1px solid #5A9C39;
+    width: 10%;
+    height: 2.5em;
+    padding: 0px .5em;
+    align-items: center;
+}
+nav input+a{
+    background-color: #5A9C39;
+    width: 6em;
+    height: 2em;
+    align-items: center;
+    font-family: "Pixelify Sans", sans-serif;
+    color: black;
+    font-weight: bold;
+}
+
+h1,h3{
+    font-family: "Pixelify Sans", sans-serif;
+    margin: .5em 0em;
+    color: white;
+}
+input[type=text]:focus{
+    box-shadow: 0 0 8px 1px #5A9C39;
+    outline: none;
+}
+
+.cuadrojuego{
+    background-color: black;
+    border: 1px solid #5A9C39;
+    max-width: 60vw;
+    height: 600px;
+    margin: auto;
+    margin-top: 100px;
+
+}
+
+footer{
+    background-color: black;
+    text-align: center;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    align-content: center;
+    justify-content: center;
+    padding: 1em 0 1em 0;
+    position: fixed;
+    bottom: 0;
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    margin-inline: 2em;
+}

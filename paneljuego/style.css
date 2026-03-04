@@ -9,9 +9,6 @@
 
 body{
     background-image:url(/paneljuego/img/background.png);
-    display: grid;
-    min-height: 100dvh;
-    grid-template-rows: auto 1fr auto;
 }
 
 body::selection{
@@ -71,16 +68,16 @@ body::selection{
 }
 
 nav{
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 48px;
+    height: auto;
     background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    flex-flow: wrap;
 }
 nav a, nav input[type=text]{
     display: inline-flex;
-    position: relative;
-    left: 45%;
     color: white;
     text-decoration: none;
     font-family: "Pixelify Sans", sans-serif;
@@ -117,7 +114,7 @@ input[type=text]:focus{
 .video{
     background-color: black;
     border: 1px solid #5A9C39;
-    width: 1216px;
+    max-width: 1216px;
     display:flex;
     align-items: center;
     justify-self: center;
@@ -127,6 +124,7 @@ input[type=text]:focus{
     animation-fill-mode: both;
     animation-timeline: --revealing-image;
     animation-range: entry 25% cover 50%;
+    
 }
 
 .video table{
@@ -220,9 +218,13 @@ td * img{
 footer{
     background-color: black;
     text-align: center;
-    height: 100%;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
     align-content: center;
-    margin-bottom: 2em;
+    justify-content: center;
+    padding: 1em 0 1em 0;
 }
 
 footer a{
@@ -238,7 +240,7 @@ footer a{
 .slideshow-container {
   max-width: 50%;
   position: relative;
-  margin: 2em auto 2em;
+  margin: 1em auto 1em;
   padding: 3%;
   background-color: black;
   border: 1px solid #5A9C39;

@@ -14,7 +14,7 @@ fetch("juegos.json")
 
       // Al hacer clic, ir a la página del juego
       div.addEventListener("click", () => {
-        window.location.href = `../paneljuego/index.html?id=${juego.id}`;
+        window.location.href = `../paneljuego/paneljuego.html?id=${juego.id}`;
       });
 
       contenedor.appendChild(div);
@@ -37,7 +37,7 @@ fetch("juegos.json")
 
       // Al hacer clic, ir a la página del juego
       div.addEventListener("click", () => {
-        window.location.href = `../paneljuego/index.html?id=${juego.id}`;
+        window.location.href = `../paneljuego/paneljuego.html?id=${juego.id}`;
       });
 
       contenedor.appendChild(div);
@@ -60,7 +60,7 @@ fetch("juegos.json")
 
       // Al hacer clic, ir a la página del juego
       div.addEventListener("click", () => {
-        window.location.href = `../paneljuego/index.html?id=${juego.id}`;
+        window.location.href = `../paneljuego/paneljuego.html?id=${juego.id}`;
       });
 
       contenedor.appendChild(div);

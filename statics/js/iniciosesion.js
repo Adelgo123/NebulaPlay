@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem("userId", resultado.userId);
                 localStorage.setItem("avatar", JSON.stringify(resultado.avatar));
 
-                window.location.href = "./panelusuario/index.html";
+                window.location.href = "./panelusuario/panelusuario.html";
             } else {
                 alert(resultado.error || "Credenciales incorrectas");
             }
