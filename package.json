@@ -5,6 +5,7 @@
   "main": "./statics/js/mi-servidor/server.js",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "canvas": "^3.2.1",
     "express": "^5.2.1",
     "mongoose": "^9.1.6",
     "node-fetch": "^3.3.2"

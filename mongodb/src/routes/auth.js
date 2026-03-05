@@ -77,3 +77,37 @@ router.post("/login", async (req, res) => {
 });
 
 export default router;
+
+import { generateAvatarPNG } from "../utils/generateAvatar.js";
+
+// -------------------------
+// ACTUALIZAR AVATAR
+// -------------------------
+router.post("/avatar/update", async (req, res) => {
+  try {
+
+    const { userId, avatar } = req.body;
+
+    if (!userId || !avatar) {
+      return res.status(400).json({ error: "Datos incompletos" });
+    }
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { avatar },
+      { new: true }
+    );
+
+    // Generar PNG final
+    await generateAvatarPNG(userId, avatar);
+
+    res.json({
+      message: "Avatar actualizado",
+      avatar: user.avatar
+    });
+
+  } catch (err) {
+    console.error("Error actualizando avatar:", err);
+    res.status(500).json({ error: "Error del servidor" });
+  }
+});
