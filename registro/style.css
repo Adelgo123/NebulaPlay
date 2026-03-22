@@ -47,53 +47,6 @@ nav a{
   cursor: pointer;
 }
 
-/* Móvil */
-@media (max-width: 600px) {
-    body{
-        line-height: 1.4;
-        padding: 20px;
-    }
-  .menu-btn {
-    display: block;
-    align-self: end;
-  }
-
-  /* Ocultar enlaces por defecto */
-  .nav-links {
-    display: none;
-    width: 100%;
-    text-align: center;
-    padding: 0.5rem 0;
-  }
-
-  /* Cuando el nav tenga la clase "open", mostrar los enlaces */
-  nav.open .nav-links {
-    position: relative;
-    display: block;
-    text-align: right;
-  }
-  nav.open .nav-links:nth-child(7),nav.open .nav-links:nth-child(8){
-    display: none;
-  }
-
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  span *{
-    display: none;
-  }
-
-  table{
-    display: none;
-  }
-  
-  footer{
-    display: none;
-  }
-  
-}
-
 main>span{
     display: flex; 
     align-items: center; /* centra verticalmente */ 
@@ -318,22 +271,3 @@ footer a{
     animation: cursorBlink 0.7s infinite;
 }
 
-
-/* MODO MÓVIL */
-@media (max-width: 600px) {
-  .nav-links {
-    display: none; /* ocultar enlaces */
-    flex-direction: column;
-    background: #111;
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .nav-links.active {
-    display: flex; /* mostrar cuando se despliega */
-  }
-
-  .menu-btn {
-    display: block; /* mostrar icono */
-  }
-}
