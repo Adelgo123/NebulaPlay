@@ -71,10 +71,13 @@ header{
     top: 0;
     z-index: 1;
 }
-nav{
+.nav{
     max-width: 100%;
     background-color: #111;
     border-bottom: 3px solid #5A9C39;
+}
+.subnav{
+    display: none;
 }
 .menu-links{
     width: 100%;
@@ -492,20 +495,76 @@ button[type=submit]~ a{
     .select_sus ul li{
         display: none;
     }
-    nav{
+    .nav{
         background-color: #111;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         padding: 0 20px;
+        
     }
+    .subnav{
+    display: flex;
+    height: 45px;
+    width: 100%;
+    background-color: hsla(0, 0%, 7%, 0.3);
+    box-shadow: 2px 0 7px;
+    justify-content: flex-start;
+    align-items: center;
+    
+    }
+
+    .subnav button{
+        background-color: transparent;
+        color: #fafafa;
+        border: none;
+        margin-inline-start: 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+
+/*Submenu*/
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #111;
+    min-width: fit-content;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.dropdown-content a {
+    color: #fafafa;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+.dropdown-content a:hover {
+    background-color: #222;
+}
+
+.dropbtn.active {
+    color: #00e0ff;
+    font-weight: bold;
+}
+/*Fin Submenu */
+
     .menu-btn{
         display: flex;
         color: #fafafa;
         padding: 10px;
     }
-    nav::before{
+    .nav::before{
         content: "NebulaPlay";
         color: #fafafa;
         font-family: "Pixelify Sans", sans-serif;
@@ -526,6 +585,7 @@ button[type=submit]~ a{
 
 .menu-links.active{
     display: flex !important;              /* 👈 se muestra solo cuando tiene .active */
+    z-index: 99;
 }
   .menu-links .nav-links{
     width: 100%;
@@ -562,7 +622,6 @@ button[type=submit]~ a{
         transform: none;
     }
     .videofondo{
-        transform: scale(2);
         position: fixed;
         z-index: -1;
     }
