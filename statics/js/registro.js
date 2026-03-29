@@ -150,16 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------- PANEL DE PERSONALIZACIÓN EN MÓVIL ----------
-  // Estado del avatar
-const avatarState = {
-  skin: "green_01",
-  eyes: "eyes_02",
-  eyeColor: "purple",
-  mouth: "mouth_01",
-  hair: "hair_03",
-  hairColor: "black",
-  accessories: []
-};
 
 document.addEventListener("DOMContentLoaded", () => {
 
