@@ -1,7 +1,18 @@
 // servidor-web.js
-const express = require('express');
-const fetch = require('node-fetch');
+import express from 'express';
+import fetch from 'node-fetch';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 const app = express();
+
+// Necesario para rutas absolutas en ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// SERVIR TU CARPETA REAL DE HTML
+app.use('/pantallajuego', express.static(path.join(__dirname, '..', '..', 'pantallajuego')));
+app.use('/statics', express.static(path.join(__dirname, '..')));
 
 app.use(express.json());
 
@@ -24,4 +35,6 @@ app.post('/api/webrtc/offer', async (req, res) => {
   res.json(answer);
 });
 
-app.listen(3000, () => console.log('Servidor web en http://192.168.1.175:3000'));
+app.listen(3000, () => {
+  console.log('Servidor web en http://192.168.1.175:3000');
+});
