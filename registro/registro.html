@@ -16,70 +16,49 @@
 <body>
     <!-- Header -->
     <header>
-        <nav>
-            <button class="menu-btn" id="menu-btn">☰</button>
-            <a class="nav-links" href="../index.html">INICIO</a>
-            <a class="nav-links" href="../index.html#suscripciones">SUSCRIPCIONES</a>
-            <a class="nav-links" href="../index.html#catalogo">CATÁLOGO</a>
-            <a class="nav-links" href="../index.html#acercade">ACERCA DE</a>
-            <a class="nav-links" href="../index.html#contactar">CONTACTO</a>
-            <a class="nav-links" href=""><img src="/img/User.png" alt="usuario"></a>
-            <a class="nav-links" href=""><img src="/img/language.png" alt="lenguaje"></a>
+        <nav class="nav">
+            <button type="button" class="menu-btn" id="menu-btn">☰</button>
+            <div class="menu-links" id="menu-links">
+                <a class="nav-links" href="../index.html">INICIO</a>
+                <a class="nav-links" href="#suscripciones">SUSCRIPCIONES</a>
+                <a class="nav-links" href="#catalogo">CATÁLOGO</a>
+                <a class="nav-links" href="#acercade">ACERCA DE</a>
+                <a class="nav-links" href="#contactar">CONTACTO</a>
+                <a class="nav-links" href="#" id="icono-usuario"><img src="/img/User.png" alt="usuario"></a>
+                <a class="nav-links" href="">
+                <img src="/img/language.png" alt="lenguaje">
+                </a>
+            </div>
+        </nav>
+        <nav class="subnav">
+            <div class="dropdown">
+                <button type="button" class="dropbtn">Explorar ▼</button>
+                <div class="dropdown-content">
+                    <a href="#">Noticias y actualizaciones</a>
+                    <a href="#">Mis preferencias</a>
+                    <a href="#">Mi lista de deseados</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="dropbtn">Recomendaciones ▼</button>
+                <div class="dropdown-content">
+                    <a href="#">Lo más jugado</a>
+                    <a href="#">Lista de novedades</a>
+                    <a href="#">Popular entre tus amigos</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="dropbtn">Más ▼</button>
+                <div class="dropdown-content">
+                    <a href="#">Categorías</a>
+                    <a href="#">Formas de jugar</a>
+                    <a href="#">Amistades</a>
+                </div>
+            </div>
         </nav>
     </header>
     <main>
-        <span>
-            <img src="./img/atras.png" alt="Volver atras">
-            <h1>Crea tu Alien y empieza tu viaje.</h1>
-        </span>
         
-        <table class="personalizar" border="1">
-            <tr><td colspan="3" align="center"><h3>Personaliza tu Alien</h3></td></tr>
-            <tr><td class="contenedorfoto">
-                    <div class="avatar-wrapper">
-                        <img id="avatar-piel" class="layer" src="../registro/img/Personalizar Alien/Pieles y Tonos/Piel1/tono1.png">
-                        <img id="avatar-ojos" class="layer" src="/registro/img/Personalizar Alien/Ojos y Tonos/Ojos1/ojos1.png">
-                    </div>
-                </td>
-
-                <td>
-                    <div id="items-container" class="items"></div>
-                </td>
-                <td rowspan="2" class="items_selector">
-                    <div class="menu-section piel active" data-section="piel"><p>Piel</p></div>
-                    <div class="menu-section ojos" data-section="ojos"><p>Ojos</p></div>
-                    <div class="menu-section boca" data-section="boca"><p>Boca</p></div>
-                    <div class="menu-section cabello" data-section="pelo"><p>Pelo</p></div>
-                    <div class="menu-section barba" data-section="barba"><p>Barba</p></div>
-                    <div class="menu-section complementos" data-section="complementos"><p>Complementos</p></div>
-                </td>
-        </tr>
-            <tr><td><p id="texto-bienvenida"></p></td>
-            <td>
-                <div class="selectores">
-                        <button class="tono1"></button>
-                        <button class="tono2"></button>
-                        <button class="tono3"></button>
-                        <button class="tono4"></button>
-                        <button class="tono5"></button>
-                        <button class="tono6"></button>
-                        <button class="tono7"></button>
-                        <button class="tono8"></button>
-                        <button class="tono9"></button>
-                        <button class="tono10"></button>
-                        <button class="tono11"></button>
-                        <button class="tono12"></button>
-                        <button class="tono13"></button>
-                        <button class="tono14"></button>
-                        <button class="tono15"></button>
-                        <button class="tono16"></button>
-                </div>
-            </td>
-        </tr>
-        </table>
-        <table class="cuerpoprincipal">
-            <tr>
-                <td>
                     <form id="registro-form" method="POST" action="/api/auth/register">
                         <table>
                             <tr>
@@ -182,9 +161,22 @@
         <a href="">Accesibilidad</a>
         <a href="">Políticas de empresa</a>
         <a href="">Seguridad de productos</a>
-        <a href="">Contactar</a>
+        <a href="" id="contactar">Contactar</a>
     </footer>
 
+    <!-- Inicio de sesión -->
+    <div id="login-popup" class="login-hidden">
+    <div class="login-form">
+        <h2>Iniciar sesión</h2>
+        <form method="POST" id="login-form">
+            <input type="email" name="email" placeholder="Escribe tu correo" minlength="6" required>
+            <input type="password" name="password" id="" placeholder="Escribe tu contraseña" maxlength="20" minlength="6" required>
+            <button type="submit">Iniciar sesión</button>
+            <a href="../index.html">He olvidado mi contraseña</a>
+            <a href="./registro/registro.html">Aún no tengo una cuenta</a>
+        </form>
+    </div>
+</div>
     <!-- Script de Captcha -->
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     
@@ -201,5 +193,7 @@ fetch("paises.json")
   });
 </script>
 <script src="../statics/js/registro.js"></script>
+<script src="../statics/js/iniciosesion.js"></script>
+<script src="../statics/js/web.js"></script>
 </body>
 </html>

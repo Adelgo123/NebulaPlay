@@ -1,9 +1,15 @@
 *{
     font-family: "Roboto", sans-serif;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
     box-sizing: border-box;
     color: white;
+}
+html{
+  font-size: clamp(16px, 1.5vw, 18px);
+  background-color: black;
 }
 body{
     background-color: black;
@@ -11,7 +17,6 @@ body{
     background-repeat: no-repeat;
     background-position: 60em 3em;
     background-size: cover;
-    overflow: hidden;
 }
 
 ::-webkit-scrollbar{
@@ -22,16 +27,27 @@ body{
     color: black;
 }
 
-nav{
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    width: 100%;
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
-
-nav a{
+.nav{
+    max-width: 100%;
+    background-color: #111;
+    border-bottom: 3px solid #5A9C39;
+}
+.subnav{
+    display: none;
+}
+.menu-links{
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: center;
+}
+nav a{
     color: white;
     text-decoration: none;
     font-family: "Pixelify Sans", sans-serif;
@@ -47,166 +63,82 @@ nav a{
   cursor: pointer;
 }
 
-main>span{
-    display: flex; 
-    align-items: center; /* centra verticalmente */ 
-    gap: 1%; /* espacio entre imagen y texto */
-    margin-left: 2em;
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-h1,h3{
+main{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    gap: 25px;
+    max-width: 100%;
+}
+/* Ocultar los enlaces en móvil */
+.menu-links {
+    display:flex;
+}
+
+/* Mostrar cuando esté activo */
+.menu-links.active {
+    display: flex;
+}
+
+/* Botón hamburguesa */
+.menu-btn {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+label{
     font-family: "Pixelify Sans", sans-serif;
     margin: .5em 0em;
 }
 
-.avatar-wrapper {
-    position: relative;
-    width: 128px;   /* ajusta al tamaño de tu sprite */
-    height: 128px;  /* ajusta al tamaño de tu sprite */
-    justify-self: center;
-}
-
-.avatar-wrapper .layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    image-rendering: pixelated; /* para que no se vea borroso */
-}
-
-#avatar-piel, #avatar-ojos{
-    /* Escalado */
-    width: 128px; /* Ejemplo: 8x más grande */
-    height: auto; /* Mantener proporción */
+#registro-form{
     display: flex;
-    justify-self: center;
-}
-.contenedorfoto p{
-    color: #FFF;
-    font-family: "Pixelify Sans";
-    font-size: 1.17em;
-    position: relative;
-    user-select: none;
-}
-
-.personalizar{
-    position: absolute;
-    margin-left: 10em;
-    width: 50%;
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid #5A9C39;
-    border-collapse: collapse;
-}
-.selectores.items{
-    max-height: 11.25em;
-    overflow-y: scroll;
-}
-.piel1,.piel2,.piel3,.btn-ojos{
-    background-color: rgba(255, 255, 255, 0.5);
-    display: inline-flex;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    width: 3em;
-    height: 3em;
-    margin: .2em;
-    border: none;
-    cursor: pointer;
-}
-.tono1,.tono2,.tono3,.tono4,.tono5,.tono6,.tono7,.tono8,.tono9,.tono10,.tono11,.tono12,.tono13,.tono14,.tono15,.tono16{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 6px solid rgba(0, 0, 0, 0.5);
-    margin: .2em;
-    cursor: pointer;
-}
-/*Tonos*/
-.tono1{background-color: #457219;}
-.tono2{background-color: #3E8E41;}
-.tono3{background-color: #6FCF97;}
-.tono4{background-color: #A0E3B2;}
-.tono5{background-color: #5D3A9B;}
-.tono6{background-color: #7E57C2;}
-.tono7{background-color: #A66DD4;}
-.tono8{background-color: #CBA6F7;}
-.tono9{background-color: #2E7D9B;}
-.tono10{background-color: #4DD0E1;}
-.tono11{background-color: #81D4FA;}
-.tono12{background-color: #B2EBF2;}
-.tono13{background-color: #616161;}
-.tono14{background-color: #9E9E9E;}
-.tono15{background-color: #BDBDBD;}
-.tono16{background-color: #D4AF37;}
-
-.avatar-wrapper {
-    position: relative;
-    width: 128px;   /* ajusta si tu sprite es más grande */
-    height: 128px;
-    animation: flotar 3s ease-in-out infinite;
-}
-
-@keyframes flotar {
-    0%   { transform: translateY(0px); }
-    50%  { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-.layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    image-rendering: pixelated;
-}
-
-
-.items_selector div p{
-    border: 1px solid #5A9C39;
-    font-family: "Pixelify Sans", sans-serif;
-    font-size: 1.17em;
-    font-weight: bold;
-    padding: 1em 0em;
-    justify-content: center;
-    display: flex;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-    margin: 0;
-}
-.menu-section.active{
-    background-color: #5A9C39;
-    color: black;
-}
-.personalizar td{
-    width: 10%;
-}
-
-form{
-    width: 30%;
-    max-height: 45em;
-    background-color: rgba(0, 0, 0, 0.8);
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 50vw;
+    max-height: 70vh;
+    background-color: #111;
     padding: 1em;
     border: 1px solid #5A9C39;
-    justify-self: right;
-    margin-right: 10em;
     overflow-y: scroll;
-    scroll-behavior: smooth;
+    margin: auto;
 }
-td * p{
+#registro-form *{
+    margin-bottom: 15px;
+}
+#registro-form p{
     font-size: 14px;
-    margin-bottom: 1em;
 }
-input[type=text],[type=email],[type=password],[type=date],#genero,#pais{
+#registro-form input[type=text],[type=email],[type=password],[type=date],#genero,#pais{
     background-color: black;
     color: white;
     border: 1px solid #5A9C39;
-    width: 40%;
+    width: fit-content;
     height: 2.5em;
     padding: 0px .5em;
     align-items: center;
     margin-inline-end: 2em;
 }
-input[type=date]{width: 23%;}
+#registro-form input[type=password]{
+    max-width: fit-content;
+}
+#registro-form input[type=date]{
+    width: fit-content;
+}
 
-input[type=checkbox]{
+#registro-form input[type=checkbox]{
     color: black;
     border: 1px solid #5A9C39;
     padding: 0px .5em;
@@ -216,7 +148,7 @@ input[type=checkbox]{
     height: 20px;
 }
 
-input[type=text]:focus,[type=email]:focus,[type=password]:focus,[type=date]:focus,[type=checkbox]:focus,#genero:focus,#pais:focus{
+#registro-form input[type=text]:focus,[type=email]:focus,[type=password]:focus,[type=date]:focus,[type=checkbox]:focus,#genero:focus,#pais:focus{
     box-shadow: 0 0 8px 1px #5A9C39;
     outline: none;
 }
@@ -225,7 +157,7 @@ input[type=text]:focus,[type=email]:focus,[type=password]:focus,[type=date]:focu
     justify-self: center;
     display: flex;
 }
-input[type=submit].submit{
+#registro-form input[type=submit].submit{
     color: black;
     text-decoration: none;
     background-color: #5A9C39;
@@ -235,39 +167,261 @@ input[type=submit].submit{
     padding: 1em 2em;
     display: flex;
     border: none;
-    width: 40%;
     justify-self: center;
     cursor: pointer;
 }
-input[type=submit].submit + a{
+#registro-form input[type=submit].submit + a{
     display: flex;
     justify-self: center;
 }
 footer{
-    background-color: black;
-    text-align: center;
-    align-content: center;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #111;
+    border-top: 3px solid #5A9C39;
     padding: 1em;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    
 }
+
 footer a{
+    flex-grow: 1;
+    flex-basis: 200;
+    flex-direction: column;
     color: white;
     text-decoration: none;
     font-size: 12px;
-    font-weight: 600;
-    margin-inline: 2em;
 }
 
-#texto-bienvenida {
-    padding: 1em;
+/*Inicio de sesión*/
+#login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: opacity .3s ease;
+}
+
+.login-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.login-form {
+    background: #111;
+    padding: 2em;
+    border: 1px solid #5A9C39;
+    text-align: center;
+    color: white;
+    
+}
+.login-form *{
+    margin-bottom: 20px;
+}
+.login-form input[type=email],[type=password] {
+    background-color: black;
+    color: white;
+    border: 1px solid #5A9C39;
+    width: 60%;
+    height: 2.5em;
+    padding: 0px .5em;
+    align-items: center;
+}
+.login-form input:focus{
+    box-shadow: 0 0 8px 1px #5A9C39;
+    outline: none;
+}
+.login-form button[type=submit]{
+    color: black;
+    text-decoration: none;
+    background-color: #5A9C39;
     font-family: "Pixelify Sans", sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
-    white-space: pre-wrap;
-    width: fit-content;
-    animation: cursorBlink 0.7s infinite;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1em;
+    display: flex;
+    border: none;
+    justify-self: center;
+    cursor: pointer;
+}
+.login-form button[type=submit] + a{
+    display: flex;
+    justify-self: center;
+}
+.login-form button[type=submit]~ a{
+    color: white;
 }
 
+
+@media (max-width:1000px) {
+    ::-webkit-scrollbar{
+    width: 5px;
+    }
+    .select_sus ul li{
+        display: none;
+    }
+    .nav{
+        background-color: #111;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        
+    }
+    .subnav{
+    display: flex;
+    height: 45px;
+    width: 100%;
+    background-color: hsla(0, 0%, 7%, 0.3);
+    box-shadow: 2px 0 7px;
+    justify-content: flex-start;
+    align-items: center;
+    
+    }
+
+    .subnav button{
+        background-color: transparent;
+        color: #fafafa;
+        border: none;
+        margin-inline-start: 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+
+/*Submenu*/
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #111;
+    min-width: fit-content;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.dropdown-content a {
+    color: #fafafa;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+.dropdown-content a:hover {
+    background-color: #222;
+}
+
+.dropbtn.active {
+    color: #00e0ff;
+    font-weight: bold;
+}
+/*Fin Submenu */
+
+    .menu-btn{
+        display: flex;
+        color: #fafafa;
+        padding: 10px;
+    }
+    .nav::before{
+        content: "NebulaPlay";
+        color: #fafafa;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 32px;
+    }
+    .menu-links{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;              /* 👈 importante */
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #111;
+    box-shadow: 0px -5px 7px black;
+}
+
+.menu-links.active{
+    display: flex !important;              /* 👈 se muestra solo cuando tiene .active */
+    z-index: 99;
+}
+  .menu-links .nav-links{
+    width: 100%;
+    text-align: right;
+    border-top: 1px solid #5A9C39;
+    border-bottom: 1px solid #5A9C39;
+    margin: 0;
+  }
+  .menu-links .nav-links:hover{
+    background-color: #272727;
+  }
+  #registro-form{
+    max-width: 100vw;
+  }
+}
+
+@media (max-width:700px) {
+    ::-webkit-scrollbar{
+    width: 0;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+   .juegos, .title h1, #games-container, .menu-links.active, .select_sus ul li{
+        display: none;
+    }
+
+    .title{
+        position: static;
+        max-width: 100%;
+        justify-items: center;
+    }
+    .avatar-wrapper button:hover{
+        transform: none;
+    }
+    .videofondo{
+        position: fixed;
+        z-index: -1;
+    }
+    .table .catalogo{
+        background-color: #111;
+    }
+    .table .catalogo tr{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .table .catalogo tr td{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    footer{
+        display: block;
+    }
+    footer a{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        line-height: 3;
+    }
+}

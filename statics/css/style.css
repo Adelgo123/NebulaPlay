@@ -236,23 +236,8 @@ video{
 .TERROR:hover,.SUPERVIVENCIA:hover,.ANIME:hover,.RETRO:hover,
 .ZOMBIS:hover,.FANTASIA:hover,.MULTIJUGADOR:hover,
 .DEPORTES:hover,.AVENTURA:hover{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     cursor: pointer;
-    color: rgba(0, 0, 0, 0);
-    animation: fadeIn 1s infinite alternate;
 }
-
-.TERROR:hover{ background-image: url(/img/Frame\ 12.png); }
-.SUPERVIVENCIA:hover{ background-image: url(/img/nier.png); }
-.ANIME:hover{ background-image: url(/img/anime.png); }
-.RETRO:hover{ background-image: url(/img/retro.png); }
-.ZOMBIS:hover{ background-image: url(/img/zombis.png); }
-.FANTASIA:hover{ background-image: url(/img/fantasia.png); }
-.MULTIJUGADOR:hover{ background-image: url(/img/multijugador.png); }
-.DEPORTES:hover{ background-image: url(/img/deportes.png); }
-.AVENTURA:hover{ background-image: url(/img/aventura.png); }
 
 .video{
     display: flex;
@@ -468,7 +453,7 @@ footer a{
     box-shadow: 0 0 8px 1px #5A9C39;
     outline: none;
 }
-button[type=submit]{
+.login-form button[type=submit]{
     color: black;
     text-decoration: none;
     background-color: #5A9C39;
@@ -481,11 +466,11 @@ button[type=submit]{
     justify-self: center;
     cursor: pointer;
 }
-button[type=submit] + a{
+.login-form button[type=submit] + a{
     display: flex;
     justify-self: center;
 }
-button[type=submit]~ a{
+.login-form button[type=submit]~ a{
     color: white;
 }
 @media (max-width:1000px) {
