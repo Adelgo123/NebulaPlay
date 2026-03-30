@@ -8,6 +8,7 @@
 }
 
 body{
+    font-size: clamp(16px, 1.5vw, 18px);
     background-color: #040603;
 }
 
@@ -22,18 +23,27 @@ body::selection{
     background-color: #5A9C39;
     color: black;
 }
-
-nav{
-    height: auto;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    width: 100%;
-    flex-flow: wrap;
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
-nav a, nav input[type=text]{
-    display: inline-flex;
+.nav{
+    max-width: 100%;
+    background-color: #111;
+    border-bottom: 3px solid #5A9C39;
+}
+.subnav{
+    display: none;
+}
+.menu-links{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: center;
+}
+nav a{
     color: white;
     text-decoration: none;
     font-family: "Pixelify Sans", sans-serif;
@@ -41,6 +51,12 @@ nav a, nav input[type=text]{
     margin-inline: 1em;
 }
 nav input[type=text]{
+    display: inline-flex;
+    color: white;
+    text-decoration: none;
+    font-family: "Pixelify Sans", sans-serif;
+    padding: 1em;
+    margin-inline: 1em;
     background-color: black;
     border: 1px solid #5A9C39;
     width: 10%;
@@ -48,6 +64,7 @@ nav input[type=text]{
     padding: 0px .5em;
     align-items: center;
 }
+
 nav input+a{
     background-color: #5A9C39;
     width: 6em;
@@ -67,41 +84,223 @@ input[type=text]:focus{
     box-shadow: 0 0 8px 1px #5A9C39;
     outline: none;
 }
-
-.cuadrojuego{
-    background-color: black;
-    border: 1px solid #5A9C39;
-    max-width: 60vw;
-    height: 600px;
-    margin: auto;
-    margin-top: 100px;
-
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+/* Ocultar los enlaces en móvil */
+.menu-links {
+    display:flex;
 }
 
-footer{
-    background-color: black;
-    text-align: center;
-    height: auto;
-    width: 100%;
+/* Mostrar cuando esté activo */
+.menu-links.active {
     display: flex;
-    flex-flow: wrap;
-    align-content: center;
-    justify-content: center;
-    padding: 1em 0 1em 0;
-    position: fixed;
-    bottom: 0;
+}
+
+/* Botón hamburguesa */
+.menu-btn {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+footer{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #111;
+    border-top: 3px solid #5A9C39;
+    padding: 1em;
 }
 
 footer a{
+    flex-grow: 1;
+    flex-basis: 200;
+    flex-direction: column;
     color: white;
     text-decoration: none;
     font-size: 12px;
-    font-weight: 600;
-    margin-inline: 2em;
 }
 
 #gameVideo{
     width: 100%;
-    max-height:90vh;
+    max-height:auto;
     border: 1px solid #5A9C39;
+}
+
+
+@media (max-width:1000px) {
+    ::-webkit-scrollbar{
+    width: 5px;
+    }
+    .select_sus ul li{
+        display: none;
+    }
+    .nav{
+        background-color: #111;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        
+    }
+    .subnav{
+    display: flex;
+    height: 45px;
+    width: 100%;
+    background-color: hsla(0, 0%, 7%, 0.3);
+    box-shadow: 2px 0 7px;
+    justify-content: flex-start;
+    align-items: center;
+    
+    }
+
+    .subnav button{
+        background-color: transparent;
+        color: #fafafa;
+        border: none;
+        margin-inline-start: 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+
+/*Submenu*/
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #111;
+    min-width: fit-content;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.dropdown-content a {
+    color: #fafafa;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+.dropdown-content a:hover {
+    background-color: #222;
+}
+
+.dropbtn.active {
+    color: #00e0ff;
+    font-weight: bold;
+}
+/*Fin Submenu */
+
+    .menu-btn{
+        display: flex;
+        color: #fafafa;
+        padding: 10px;
+    }
+    .nav::before{
+        content: "NebulaPlay";
+        color: #fafafa;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 32px;
+    }
+    .menu-links{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;              /* 👈 importante */
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #111;
+    box-shadow: 0px -5px 7px black;
+}
+
+.menu-links.active{
+    display: flex !important;              /* 👈 se muestra solo cuando tiene .active */
+    z-index: 99;
+}
+  .menu-links .nav-links{
+    width: 100%;
+    text-align: right;
+    border-top: 1px solid #5A9C39;
+    border-bottom: 1px solid #5A9C39;
+    margin: 0;
+  }
+  .menu-links .nav-links:hover{
+    background-color: #272727;
+  }
+}
+
+@media (max-width:700px) {
+    ::-webkit-scrollbar{
+    width: 0;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+   .juegos, .title h1, #games-container, .menu-links.active, .select_sus ul li{
+        display: none;
+    }
+
+    .title{
+        position: static;
+        max-width: 100%;
+        justify-items: center;
+    }
+    .avatar-wrapper button:hover{
+        transform: none;
+    }
+    .videofondo{
+        position: fixed;
+        z-index: -1;
+    }
+    .table .catalogo{
+        background-color: #111;
+    }
+    .table .catalogo tr{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .table .catalogo tr td{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    footer{
+        display: block;
+    }
+    footer a{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        line-height: 3;
+    }
 }
