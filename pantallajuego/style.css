@@ -99,3 +99,9 @@ footer a{
     font-weight: 600;
     margin-inline: 2em;
 }
+
+#gameVideo{
+    width: 100%;
+    height: auto;
+    border: 1px solid #5A9C39;
+}
