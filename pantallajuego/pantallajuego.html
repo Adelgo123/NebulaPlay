@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NebulaPlay - Juego</title>
 
-    <!-- Bootstrap desde statics -->
-    <link rel="stylesheet" href="/statics/node_modules/bootstrap/dist/css/bootstrap.min.css">
-
     <!-- Tu CSS -->
     <link rel="stylesheet" href="/pantallajuego/style.css">
 
@@ -30,14 +27,8 @@
     </header>
 
     <main>
-        <video id="gameVideo"
-            autoplay
-            playsinline
-            style="width:100%; max-height:90vh; background:transparent;">
-        </video>
-
-        <video id="localStream" autoplay muted playsinline></video>
-        <button id="jugar-ahora" type="POST">Jugar Ahora</button>
+        <video id="gameVideo"></video>
+        <button id="jugar-ahora">Jugar</button>
     </main>
 
     <footer>
@@ -52,6 +43,5 @@
 
     <!-- Cargar SOLO el cliente WebRTC -->
     <script src="/statics/js/webrtc-client.js"></script>
-    <script src="/statics/js/servidor-web.js"></script>
 </body>
 </html>

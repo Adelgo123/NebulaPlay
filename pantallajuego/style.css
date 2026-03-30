@@ -102,6 +102,6 @@ footer a{
 
 #gameVideo{
     width: 100%;
-    height: auto;
+    max-height:90vh;
     border: 1px solid #5A9C39;
 }

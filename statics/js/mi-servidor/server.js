@@ -97,7 +97,7 @@ app.post("/api/webrtc/offer", async (req, res) => {
   console.log("📤 Reenviando offer al servidor de juegos...");
 
   try {
-    const resp = await fetch("http://192.168.1.173:8000/offer", {
+    const resp = await fetch("http://localhost:8000/offer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(offer)
@@ -122,7 +122,7 @@ app.post("/api/webrtc/candidate", async (req, res) => {
   console.log("📨 Candidate recibido del navegador, reenviando al servidor de juegos...");
 
   try {
-    await fetch("http://192.168.1.173:8000/candidate", {
+    await fetch("http://localhost:8000/candidate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(candidate)
@@ -136,11 +136,6 @@ app.post("/api/webrtc/candidate", async (req, res) => {
   }
 });
 
-
-app.post("/api/webrtc/candidate", (req, res) => {
-  console.log("📨 Candidate recibido del navegador");
-  res.sendStatus(200);
-});
 
 // ===============================
 // INICIAR SERVIDOR
