@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         alt="${game.title}" 
                         width="300" 
                         height="112">
-                    <button id="jugar-ahora">Jugar ahora</button>
+                    <a href="../pantallajuego/pantallajuego.html">Jugar ahora</a>
                 </aside>
             </section>
 

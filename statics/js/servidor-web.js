@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 app.use('/pantallajuego', express.static(path.join(__dirname, '..', '..', 'pantallajuego')));
 app.use('/statics', express.static(path.join(__dirname, '..')));
 
+
 app.use(express.json());
 
 // Recibe la offer del navegador y la reenvía al servidor de juegos
@@ -22,7 +23,7 @@ app.post('/api/webrtc/offer', async (req, res) => {
 
   console.log("📤 Reenviando offer al servidor de juegos...");
 
-  const resp = await fetch('http://192.168.1.173:4000/webrtc/offer', {
+  const resp = await fetch('http://localhost:8000/offer', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(offer)
@@ -35,6 +36,15 @@ app.post('/api/webrtc/offer', async (req, res) => {
   res.json(answer);
 });
 
-app.listen(3000, () => {
+
+app.post('/api/webrtc/candidate', (req, res) => {
+  console.log("📨 Candidate recibido del navegador");
+  // De momento no hacemos nada con él
+  res.sendStatus(200);
+});
+
+
+app.listen(3000, '0.0.0.0', () => {
   console.log('Servidor web en http://192.168.1.175:3000');
 });
+
