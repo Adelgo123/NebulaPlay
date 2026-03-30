@@ -36,7 +36,7 @@ async function startGame() {
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
 
-    const res = await fetch("http://192.168.1.175:3000/api/webrtc/offer", {
+    const res = await fetch("/api/webrtc/offer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(offer)

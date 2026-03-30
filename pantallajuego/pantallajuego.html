@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NebulaPlay - Juego</title>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="../registro/img/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap desde statics -->
+    <link rel="stylesheet" href="/statics/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="/pantallajuego/style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Infant:wght@300;700&family=Pixelify+Sans:wght@400;700&family=Roboto:wght@100;900&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/statics/registro/img/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header>
         <nav>
@@ -25,12 +28,12 @@
             <a href="">Mi perfil</a>
         </nav>
     </header>
-    <main>
-        <video id="stream" autoplay playsinline style="width:100%; height:auto; background:black;"></video>
-        <button onclick="iniciarJuego()">Jugar ahora</button>
 
-        <button id="jugar-ahora" type="POST">Jugar ahora</button>
+    <main>
+        <video id="stream" autoplay playsinline muted style="width:100%; height:auto; background:black;"></video>
+        <button id="jugar-ahora" class="btn btn-primary mt-3">Jugar ahora</button>
     </main>
+
     <footer>
         <a href="">Política de privacidad</a>
         <a href="">Sus opciones de privacidad</a>
@@ -40,7 +43,8 @@
         <a href="">Seguridad de productos</a>
         <a href="">Contactar</a>
     </footer>
-    <script src="../statics/js/webrtc-client.js"></script>
-    <script src="../statics/js/servidor-web.js"></script>
+
+    <!-- Cargar SOLO el cliente WebRTC -->
+    <script src="/statics/js/webrtc-client.js"></script>
 </body>
 </html>
