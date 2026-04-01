@@ -9,9 +9,9 @@ const router = express.Router();
 // -------------------------
 router.post("/register", async (req, res) => {
   try {
-    const { email, password, avatar } = req.body;
+    const { email, password } = req.body;
 
-    // Validación SIN avatar obligatorio
+    // Validación
     if (!email || !password) {
       return res.status(400).json({ error: "Datos incompletos" });
     }
@@ -25,12 +25,13 @@ router.post("/register", async (req, res) => {
     // Encriptar password
     const passwordHash = await bcrypt.hash(password, 10);
 
-    // Crear usuario (avatar opcional)
+    // Crear usuario
     const user = await User.create({
       email,
-      passwordHash,
-      avatar: avatar || {}   // avatar vacío si no se envía
+      passwordHash
     });
+
+    return res.redirect("../../panelusuario/panelusuario.html");
 
     res.status(201).json({
       message: "Usuario creado correctamente",
@@ -66,8 +67,7 @@ router.post("/login", async (req, res) => {
 
     res.json({
       message: "Login exitoso",
-      userId: user._id,
-      avatar: user.avatar
+      userId: user._id
     });
 
   } catch (err) {

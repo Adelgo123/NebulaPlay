@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 // CONEXIÓN A MONGODB
 // ===============================
 mongoose
-  .connect("mongodb://localhost:27017/NebulaPlay")
+  .connect("mongodb://root:Admin123@localhost:27017/NebulaPlay?authSource=admin")
   .then(() => console.log("MongoDB conectado"))
   .catch(err => console.error(err));
 

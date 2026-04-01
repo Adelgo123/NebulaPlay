@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "main": "./statics/js/mi-servidor/server.js",
+  "scripts": {
+    "start": "concurrently \" node statics/js/mi-servidor/server.js\" \"cloudflared tunnel --url http://localhost:3000\""
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "canvas": "^3.2.1",
@@ -10,5 +13,8 @@
     "express": "^5.2.1",
     "mongoose": "^9.1.6",
     "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

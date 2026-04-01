@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NebulaPlay - Panel de usuario</title>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../statics/css/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -16,42 +16,26 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="">INICIO</a>
-            <a href="#suscripciones">CATÁLOGO</a>
-            <a href="">COMUNIDAD</a>
-            <a href="">MI COLECCIÓN</a>
-            <input type="text" name="buscar" id="buscar" placeholder="Buscar...">
-            <a href="">Mi perfil</a>
-        </nav>
+        <login-nav></login-nav>
     </header>
-    <section class="contenedorjuegos">
-        <h3>Jugados recientemente</h3>
-        <div id="lista-juegos" class="carrusel"></div>
-    </section>
-    
-    <div id="games-container"></div>
 
-    <section class="contenedorjuegos">
-        <h3>Recomendaciones de la comunidad</h3>
-        <div id="lista-juegos2" class="carrusel"></div>
-    </section>
-    <section class="contenedorjuegos">
-        <h3>Recien llegados</h3>
-        <div id="lista-juegos3" class="carrusel"></div>
-    </section>
-    <footer>
-        <a href="">Política de privacidad</a>
-        <a href="">Sus opciones de privacidad</a>
-        <a href="">Términos de servicio</a>
-        <a href="">Accesibilidad</a>
-        <a href="">Políticas de empresa</a>
-        <a href="">Seguridad de productos</a>
-        <a href="">Contactar</a>
-    </footer>
+    <main>
+        <section class="contenedorjuegos">
+            <h3>Jugados recientemente</h3>
+            <div id="lista-juegos" class="carrusel"></div>
+        </section>
+        
+        <div id="games-container"></div>
+
+    </main>
+
+    <main-footer></main-footer>
+
+    <script src="../statics/js/components.js"></script>
     <script src="../statics/js/gameData.js"></script>
     <script src="../statics/js/app.js"></script>
     <script src="../statics/js/mediaData.js"></script>
+    <script src="../statics/js/web.js"></script>
     <script src="juegos.js"></script>
 </body>
 </html>

@@ -1,42 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const menuBtn = document.getElementById("menu-btn");
-    const menuLinks = document.getElementById("menu-links");
 
-    menuBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        menuLinks.classList.toggle("active");
-    });
+    // ============================
+    // MENÚ HAMBURGUESA (guest + login)
+    // ============================
+    document.querySelectorAll(".nav").forEach(nav => {
+        const menuBtn = nav.querySelector(".menu-btn");
+        const menuLinks = nav.querySelector(".menu-links");
 
-    document.addEventListener("click", (e) => {
-        if (!menuLinks.contains(e.target) && e.target !== menuBtn) {
-            menuLinks.classList.remove("active");
-        }
-    });
-});
+        if (!menuBtn || !menuLinks) return;
 
-//Submenu
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropbtn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        menuBtn.addEventListener("click", (e) => {
             e.stopPropagation();
+            menuLinks.classList.toggle("active");
+        });
 
-            document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const menu = btn.nextElementSibling;
-            const isOpen = menu.style.display === 'block';
-
-            document.querySelectorAll('.dropdown-content').forEach(m => m.style.display = 'none');
-
-            if (!isOpen) menu.style.display = 'block';
+        document.addEventListener("click", (e) => {
+            if (!menuLinks.contains(e.target) && e.target !== menuBtn) {
+                menuLinks.classList.remove("active");
+            }
         });
     });
 
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.dropdown-content').forEach(m => m.style.display = 'none');
-            document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-        }
-    });
-});
 
+    // ============================
+    // DROPDOWNS (guest + login + MI PERFIL)
+    // ============================
+    document.querySelectorAll(".dropdown").forEach(drop => {
+        const btn = drop.querySelector(".dropbtn");
+        const menu = drop.querySelector(".dropdown-content");
+
+        if (!btn || !menu) return;
+
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            // Cerrar todos los demás
+            document.querySelectorAll(".dropdown-content").forEach(m => m.style.display = "none");
+            document.querySelectorAll(".dropbtn").forEach(b => b.classList.remove("active"));
+
+            // Abrir este
+            const isOpen = menu.style.display === "block";
+
+            if (!isOpen) {
+                btn.classList.add("active");
+                menu.style.display = "block";
+            }
+        });
+    });
+
+    // Cerrar dropdowns al hacer click fuera
+    document.addEventListener("click", () => {
+        document.querySelectorAll(".dropdown-content").forEach(m => m.style.display = "none");
+        document.querySelectorAll(".dropbtn").forEach(b => b.classList.remove("active"));
+    });
+
+});
