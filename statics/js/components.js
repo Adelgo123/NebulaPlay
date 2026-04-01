@@ -4,7 +4,8 @@ class MainNav extends HTMLElement {
       <header class="header-guest">
         <nav class="nav nav-guest">
             <a class="nav-links" id="inicio" href="../../index.html">NebulaPlay</a>
-            <input type="text" class="search-input" placeholder="Buscar juego...">
+            <input type="text" class="search-input" id="search" placeholder="Buscar juego...">
+            <div id="results"></div>
             <button type="button" class="menu-btn guest-menu-btn">☰</button>
                 
             <div class="menu-links guest-menu-links">
@@ -80,7 +81,8 @@ class LoginNav extends HTMLElement {
       <header class="header-login">
         <nav class="nav nav-login">
         <a class="nav-links" id="inicio" href="../../panelusuario/panelusuario.html">NebulaPlay</a>
-        <input type="text" class="search-input" placeholder="Buscar juego...">
+        <input type="text" class="search-input" id="search" placeholder="Buscar juego...">
+        <div id="results"></div>
           <button type="button" class="menu-btn login-menu-btn">☰</button>
 
           <div class="menu-links login-menu-links">

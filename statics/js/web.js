@@ -55,3 +55,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+const input = document.getElementById("search");
+const resultsDiv = document.getElementById("results");
+
+input.addEventListener("input", async () => {
+  const query = input.value;
+
+  if (query.length < 2) {
+    resultsDiv.innerHTML = "";
+    return;
+  }
+
+  const res = await fetch(`/search?q=${query}`);
+  const data = await res.json();
+
+  resultsDiv.innerHTML = data.map(game => `
+    <div>
+      <h3>${game.nombre}</h3>
+    </div>
+  `).join("");
+});

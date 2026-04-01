@@ -136,6 +136,70 @@ app.post("/api/webrtc/candidate", async (req, res) => {
   }
 });
 
+// ===============================
+// MODELO GAMES (colección games)
+// ===============================
+const gameSchema = new mongoose.Schema({
+  nombre: String,
+  descripcion: String,
+  imagen: String
+});
+
+const Game = mongoose.models.Game || mongoose.model("Game", gameSchema, "games");
+// 👆 IMPORTANTE: "games" es el nombre exacto de la colección
+
+// ===============================
+// BUSCADOR
+// ===============================
+app.get("/search", async (req, res) => {
+  try {
+    const query = req.query.q;
+
+    if (!query) return res.json([]);
+
+    const resultados = await Game.find({
+  $or: [
+    { nombre: { $regex: query, $options: "i" } },
+    { $text: { $search: query } }
+  ]
+}).limit(10);
+
+    res.json(resultados);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error en búsqueda" });
+  }
+});
+
+//ADMIN
+
+import adminRoutes from "../../../mongodb/src/routes/admin.js"; // ajusta según tu ruta
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Conexión a MongoDB
+mongoose.connect("mongodb://root:Admin123@localhost:27017/NebulaPlay?authSource=admin")
+  .then(() => console.log("MongoDB conectado"))
+  .catch(err => console.error(err));
+
+// Servir frontend
+app.use(express.static(path.join(__dirname)));
+
+// ===============================
+// RUTAS ADMIN
+// ===============================
+app.use("/admin/api", adminRoutes);
+
+// Servir el HTML
+app.get("/admin/admin.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "admin/admin.html"));
+});
+
+// Servir otras rutas estáticas si es necesario
+// app.use("/statics", express.static(path.join(__dirname, "statics")));
+
 
 // ===============================
 // INICIAR SERVIDOR
@@ -143,3 +207,4 @@ app.post("/api/webrtc/candidate", async (req, res) => {
 app.listen(3000, "0.0.0.0", () => {
   console.log("Servidor unificado corriendo en http://localhost:3000");
 });
+

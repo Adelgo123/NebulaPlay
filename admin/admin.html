@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<style>
+body { font-family: Arial; background: #0f172a; color:white; margin:0; padding:0;}
+.center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:#1e293b; padding:30px; border-radius:15px; text-align:center;}
+input, select { padding:10px; margin:5px; width:250px; border-radius:5px; border:none;}
+button { padding:10px 20px; border:none; background:#38bdf8; cursor:pointer; border-radius:5px; margin-top:10px;}
+.hidden{display:none;}
+.card{background:#1e293b; padding:10px; margin:10px 0; border-radius:10px;}
+.tabs button{margin-right:10px; padding:8px 15px;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginForm" class="center">
+<h2>🔑 Admin Login</h2>
+<input type="email" id="email" placeholder="Correo"><br>
+<input type="password" id="password" placeholder="Contraseña"><br>
+<button onclick="login()">Entrar</button>
+<p id="loginError" style="color:red;"></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden" style="padding:20px;">
+<h1>🚀 Panel Admin</h1>
+
+<div class="tabs">
+  <button onclick="showTab('usuarios')">Usuarios Registrados</button>
+  <button onclick="showTab('activos')">Usuarios Activos</button>
+  <button onclick="showTab('games')">Juegos</button>
+</div>
+
+<div id="usuarios" class="tab">
+  <h2>Usuarios Registrados</h2>
+  <div id="userList"></div>
+</div>
+
+<div id="activos" class="tab hidden">
+  <h2>Usuarios Activos</h2>
+  <div id="activeList"></div>
+</div>
+
+<div id="games" class="tab hidden">
+<h2>🎮 Añadir juego</h2>
+<input id="nombre" placeholder="Nombre">
+<input id="descripcion" placeholder="Descripción">
+<input id="imagen" placeholder="Imagen URL">
+<button onclick="crearJuego()">Crear</button>
+<div id="gameList"></div>
+</div>
+
+<script>
+const ROOT_EMAIL="juanignaciolp2001@gmail.com";
+const ROOT_PASS="Admin123";
+let TOKEN="";
+
+// LOGIN
+function login(){
+  const email=document.getElementById("email").value;
+  const password=document.getElementById("password").value;
+  const error=document.getElementById("loginError");
+  if(email===ROOT_EMAIL && password===ROOT_PASS){
+    TOKEN="root-token";
+    document.getElementById("loginForm").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+    cargarTodo();
+  } else {
+    error.innerText="Correo o contraseña incorrectos";
+  }
+}
+
+function getHeaders(){ return {"Content-Type":"application/json","Authorization":"Bearer "+TOKEN}; }
+
+// ===== GAMES =====
+async function crearJuego(){
+  await fetch("/admin/api/games",{method:"POST",headers:getHeaders(),body:JSON.stringify({
+    nombre:document.getElementById("nombre").value,
+    descripcion:document.getElementById("descripcion").value,
+    imagen:document.getElementById("imagen").value
+  })});
+  cargarJuegos();
+}
+
+async function cargarJuegos(){
+  const res=await fetch("/admin/api/games",{headers:getHeaders()});
+  const data=await res.json();
+  document.getElementById("gameList").innerHTML=data.map(g=>`
+    <div class="card"><b>${g.nombre}</b><p>${g.descripcion||""}</p>
+    <button onclick="borrarJuego('${g._id}')">❌</button></div>
+  `).join("");
+}
+
+async function borrarJuego(id){
+  await fetch("/admin/api/games/"+id,{method:"DELETE",headers:getHeaders()});
+  cargarJuegos();
+}
+
+// ===== USERS =====
+function showTab(tab){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.add('hidden'));
+  document.getElementById(tab).classList.remove('hidden');
+}
+
+async function cargarUsuarios(){
+  const res=await fetch('/admin/api/users',{headers:getHeaders()});
+  const data=await res.json();
+  document.getElementById('userList').innerHTML=data.map(u=>`
+    <div class="card">
+      <input value="${u.nombre}" onchange="updateUser('${u._id}','nombre',this.value)">
+      <input value="${u.apellidos}" onchange="updateUser('${u._id}','apellidos',this.value)">
+      <input value="${u.username}" onchange="updateUser('${u._id}','username',this.value)">
+      <input value="${u.email}" onchange="updateUser('${u._id}','email',this.value)">
+      <input value="${u.pais}" onchange="updateUser('${u._id}','pais',this.value)">
+      <input type="date" value="${u.fechaNacimiento?.slice(0,10)||''}" onchange="updateUser('${u._id}','fechaNacimiento',this.value)">
+      <select onchange="updateUser('${u._id}','genero',this.value)">
+        <option value="">--</option>
+        <option value="Masculino" ${u.genero==='Masculino'?'selected':''}>Masculino</option>
+        <option value="Femenino" ${u.genero==='Femenino'?'selected':''}>Femenino</option>
+        <option value="Otro" ${u.genero==='Otro'?'selected':''}>Otro</option>
+      </select>
+      <label>
+        <input type="checkbox" ${u.recibeComunicaciones?'checked':''} onchange="updateUser('${u._id}','recibeComunicaciones',this.checked)">
+        Recibir comunicaciones
+      </label>
+    </div>
+  `).join('');
+}
+
+async function cargarActivos(){
+  const res=await fetch('/admin/api/users/activos',{headers:getHeaders()});
+  const data=await res.json();
+  document.getElementById('activeList').innerHTML=data.map(u=>`
+    <div class="card"><b>${u.username} (${u.email})</b> - IP: ${u.lastLoginIP||'Desconocida'}</div>
+  `).join('');
+}
+
+async function updateUser(id,field,value){
+  await fetch('/admin/api/users/'+id,{method:'PUT',headers:getHeaders(),body:JSON.stringify({[field]:value})});
+}
+
+// ===== CARGAR TODO =====
+function cargarTodo(){
+  cargarUsuarios();
+  cargarActivos();
+  cargarJuegos();
+}
+</script>
+
+</body>
+</html>
