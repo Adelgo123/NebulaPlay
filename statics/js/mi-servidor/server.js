@@ -157,11 +157,8 @@ app.get("/search", async (req, res) => {
 
     if (!query) return res.json([]);
 
-    const resultados = await Game.find({
-  $or: [
-    { nombre: { $regex: query, $options: "i" } },
-    { $text: { $search: query } }
-  ]
+   const resultados = await Game.find({
+  nombre: { $regex: query, $options: "i" }
 }).limit(10);
 
     res.json(resultados);
@@ -178,11 +175,6 @@ import adminRoutes from "../../../mongodb/src/routes/admin.js"; // ajusta según
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Conexión a MongoDB
-mongoose.connect("mongodb://root:Admin123@localhost:27017/NebulaPlay?authSource=admin")
-  .then(() => console.log("MongoDB conectado"))
-  .catch(err => console.error(err));
 
 // Servir frontend
 app.use(express.static(path.join(__dirname)));

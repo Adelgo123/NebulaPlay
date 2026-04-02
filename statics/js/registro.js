@@ -307,3 +307,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+
+document.getElementById("registro-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData.entries());
+
+  const res = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+
+  if(result.token){
+    localStorage.setItem("token", result.token);
+    window.location.href = "/panelusuario/panelusuario.html";
+  } else {
+    alert(result.error || "Error en registro");
+  }
+});

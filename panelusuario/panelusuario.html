@@ -30,7 +30,12 @@
     </main>
 
     <main-footer></main-footer>
-
+    <script>
+        if(!localStorage.getItem("token")){
+            window.location.href = "/index.html";
+        }
+    </script>
+    <script src="/mongodb/src/routes/auth.js"></script>
     <script src="../statics/js/components.js"></script>
     <script src="../statics/js/gameData.js"></script>
     <script src="../statics/js/app.js"></script>

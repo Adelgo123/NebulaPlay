@@ -43,18 +43,25 @@ router.get("/users", isAdmin, async (req,res)=>{
   res.json(users);
 });
 
-router.get("/users/activos", isAdmin, async (req,res)=>{
-  const users = await User.find({ lastLoginIP: { $ne: "" } }).limit(100);
-  res.json(users);
+router.get("/users/activos", isAdmin, async (req, res) => {
+  try {
+    // ejemplo simple: últimos logins recientes
+    const activos = await User.find({
+      lastLoginIP: { $ne: "" }
+    }).limit(50);
+
+    res.json(activos);
+  } catch (err) {
+    res.status(500).json({ error: "Error obteniendo activos" });
+  }
 });
 
-router.put("/users/:id", isAdmin, async (req,res)=>{
-  try{
-    const data = req.body;
-    const user = await User.findByIdAndUpdate(req.params.id, data, { new: true });
-    res.json(user);
-  }catch(err){
-    res.status(500).json({ error:"Error al actualizar usuario" });
+router.put("/users/:id", isAdmin, async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json({ message: "Usuario actualizado" });
+  } catch (err) {
+    res.status(500).json({ error: "Error actualizando usuario" });
   }
 });
 

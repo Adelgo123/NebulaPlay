@@ -98,7 +98,7 @@ class LoginNav extends HTMLElement {
                     <a href="#">Detalles de la cuenta</a>
                     <a href="#">Ver mi suscripción</a>
                     <a href="#">Cambiar de cuenta...</a>
-                    <a href="#">Cerrar sesión...</a>
+                    <a href="#" id="logoutBtn">Cerrar sesión...</a>
                 </div>
             </div>
           </div>
