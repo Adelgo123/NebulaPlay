@@ -10,6 +10,7 @@ import cors from "cors";
 
 // Rutas de autenticación
 import authRoutes from "../../../mongodb/src/routes/auth.js";
+import adminRoutes from "../../../mongodb/src/routes/admin.js";
 
 // ===============================
 // CONFIGURACIÓN BASE
@@ -18,6 +19,11 @@ const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// 🔗 SERVIDOR DE JUEGOS (GO)
+const GAME_SERVER_HOST = "192.168.1.173";
+const GAME_SERVER_PORT = 8000;
+const GAME_SERVER_BASE_URL = `http://${GAME_SERVER_HOST}:${GAME_SERVER_PORT}`;
 
 // Middlewares
 app.use(cors());
@@ -89,7 +95,7 @@ app.post("/submit", async (req, res) => {
 });
 
 // ===============================
-// ENDPOINTS WEBRTC
+// ENDPOINTS WEBRTC (PROXY A GO)
 // ===============================
 app.post("/api/webrtc/offer", async (req, res) => {
   const offer = req.body;
@@ -97,7 +103,7 @@ app.post("/api/webrtc/offer", async (req, res) => {
   console.log("📤 Reenviando offer al servidor de juegos...");
 
   try {
-    const resp = await fetch("http://localhost:8000/offer", {
+    const resp = await fetch(`${GAME_SERVER_BASE_URL}/offer`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(offer)
@@ -122,14 +128,13 @@ app.post("/api/webrtc/candidate", async (req, res) => {
   console.log("📨 Candidate recibido del navegador, reenviando al servidor de juegos...");
 
   try {
-    await fetch("http://localhost:8000/candidate", {
+    await fetch(`${GAME_SERVER_BASE_URL}/candidate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(candidate)
     });
 
     res.sendStatus(200);
-
   } catch (err) {
     console.error("❌ Error reenviando candidate al servidor de juegos:", err);
     res.status(500).json({ error: "No se pudo reenviar el candidate" });
@@ -145,8 +150,8 @@ const gameSchema = new mongoose.Schema({
   imagen: String
 });
 
-const Game = mongoose.models.Game || mongoose.model("Game", gameSchema, "games");
-// 👆 IMPORTANTE: "games" es el nombre exacto de la colección
+const Game =
+  mongoose.models.Game || mongoose.model("Game", gameSchema, "games");
 
 // ===============================
 // BUSCADOR
@@ -157,46 +162,29 @@ app.get("/search", async (req, res) => {
 
     if (!query) return res.json([]);
 
-   const resultados = await Game.find({
-  nombre: { $regex: query, $options: "i" }
-}).limit(10);
+    const resultados = await Game.find({
+      nombre: { $regex: query, $options: "i" }
+    }).limit(10);
 
     res.json(resultados);
-
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error en búsqueda" });
   }
 });
 
-//ADMIN
-
-import adminRoutes from "../../../mongodb/src/routes/admin.js"; // ajusta según tu ruta
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Servir frontend
-app.use(express.static(path.join(__dirname)));
-
 // ===============================
-// RUTAS ADMIN
+// ADMIN
 // ===============================
 app.use("/admin/api", adminRoutes);
 
-// Servir el HTML
 app.get("/admin/admin.html", (req, res) => {
   res.sendFile(path.join(__dirname, "admin/admin.html"));
 });
-
-// Servir otras rutas estáticas si es necesario
-// app.use("/statics", express.static(path.join(__dirname, "statics")));
-
 
 // ===============================
 // INICIAR SERVIDOR
 // ===============================
 app.listen(3000, "0.0.0.0", () => {
-  console.log("Servidor unificado corriendo en http://localhost:3000");
+  console.log("Servidor unificado corriendo en http://192.168.1.173:3000");
 });
-

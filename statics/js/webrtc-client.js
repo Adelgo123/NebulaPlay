@@ -4,6 +4,10 @@ let pc = null;
 let channel = null;
 let started = false;
 
+// 🔗 Servidor de señalización (Node, puerto 3000)
+const SIGNALING_HOST = window.location.hostname; // 192.168.1.173 en tu caso
+const SIGNALING_BASE_URL = `http://${SIGNALING_HOST}:3000/api/webrtc`;
+
 // Mapa de teclas → código virtual en Windows
 const keyMap = {
     "KeyW": 0x57, "KeyA": 0x41, "KeyS": 0x53, "KeyD": 0x44,
@@ -26,6 +30,7 @@ function updateCursor(dx, dy) {
     cursorY = Math.max(0, Math.min(window.innerHeight, cursorY));
 
     const cursor = document.getElementById("cursor-overlay");
+    if (!cursor) return;
     cursor.style.left = cursorX + "px";
     cursor.style.top = cursorY + "px";
 }
@@ -37,8 +42,11 @@ async function startGame() {
     if (started) return;
     started = true;
 
+    console.log("🎮 startGame() desde", window.location.href);
+    console.log("🌐 SIGNALING_BASE_URL =", SIGNALING_BASE_URL);
+
     pc = new RTCPeerConnection({
-        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+        iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
     });
 
     const videoEl = document.getElementById("gameVideo");
@@ -51,33 +59,37 @@ async function startGame() {
     pc.ontrack = e => remoteStream.addTrack(e.track);
 
     // DATA CHANNEL LOW LATENCY
-    channel = pc.createDataChannel('game', { ordered: false, maxRetransmits: 0 });
+    channel = pc.createDataChannel("game", { ordered: false, maxRetransmits: 0 });
     channel.onopen = () => {
-        console.log("DataChannel abierto");
+        console.log("✅ DataChannel abierto");
         setupInput(videoEl);
     };
-    channel.onclose = () => console.log("DataChannel cerrado");
+    channel.onclose = () => console.log("❌ DataChannel cerrado");
 
     pc.onicecandidate = e => {
         if (e.candidate) {
-            fetch("http://localhost:8000/candidate", {
+            console.log("📨 Enviando candidate a", `${SIGNALING_BASE_URL}/candidate`);
+            fetch(`${SIGNALING_BASE_URL}/candidate`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(e.candidate)
-            });
+            }).catch(err => console.error("Error enviando candidate:", err));
         }
     };
 
     const offer = await pc.createOffer({ offerToReceiveVideo: true, offerToReceiveAudio: false });
     await pc.setLocalDescription(offer);
 
-    const res = await fetch("http://localhost:8000/offer", {
+    console.log("📤 Enviando offer a", `${SIGNALING_BASE_URL}/offer`);
+
+    const res = await fetch(`${SIGNALING_BASE_URL}/offer`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(offer)
     });
 
     const answer = await res.json();
+    console.log("📥 Answer recibida en el cliente");
     await pc.setRemoteDescription(answer);
 }
 
@@ -85,7 +97,6 @@ async function startGame() {
 // INPUT SYSTEM BINARIO + CURSOR OVERLAY
 // ===============================
 function setupInput(videoEl) {
-
     const cursor = document.getElementById("cursor-overlay");
 
     // Pointer lock al hacer click en el vídeo
@@ -93,12 +104,12 @@ function setupInput(videoEl) {
         if (document.pointerLockElement !== videoEl) {
             await videoEl.requestPointerLock();
         }
-        cursor.style.display = "block";
+        if (cursor) cursor.style.display = "block";
         videoEl.focus();
     });
 
     document.addEventListener("pointerlockchange", () => {
-        if (document.pointerLockElement !== videoEl) {
+        if (document.pointerLockElement !== videoEl && cursor) {
             cursor.style.display = "none";
         }
     });
@@ -158,11 +169,7 @@ function setupInput(videoEl) {
 
     document.addEventListener("mousemove", e => {
         if (document.pointerLockElement !== videoEl) return;
-
-        // enviar al backend
         sendMouse(e.movementX, e.movementY);
-
-        // mover cursor overlay
         updateCursor(e.movementX, e.movementY);
     });
 
@@ -181,4 +188,4 @@ function setupInput(videoEl) {
     });
 }
 
-document.querySelector('#jugar-ahora').addEventListener('click', startGame);
+document.querySelector("#jugar-ahora").addEventListener("click", startGame);
