@@ -142,6 +142,20 @@ footer a{
     border: 1px solid #5A9C39;
 }
 
+#cursor-overlay {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+
 
 @media (max-width:1000px) {
     ::-webkit-scrollbar{
