@@ -4,8 +4,12 @@ class MainNav extends HTMLElement {
       <header class="header-guest">
         <nav class="nav nav-guest">
             <a class="nav-links" id="inicio" href="../../index.html">NebulaPlay</a>
-            <input type="text" class="search-input" id="search" placeholder="Buscar juego...">
-            <div id="results"></div>
+            <div class="search-wrapper">
+              <input type="text" class="search-input" id="search" placeholder="Buscar juego...">
+              <div id="results">
+                <div class="result-item">Nombre del juego</div>
+              </div>
+            </div>
             <button type="button" class="menu-btn guest-menu-btn">☰</button>
                 
             <div class="menu-links guest-menu-links">
@@ -135,8 +139,18 @@ class LoginNav extends HTMLElement {
         </nav>
       </header>
     `;
+  const logoutBtn = this.querySelector("#logoutBtn");
+
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+
+      window.location.href = "../../index.html";
+    });
   }
 }
+
+
 customElements.define("login-nav", LoginNav);
 
 

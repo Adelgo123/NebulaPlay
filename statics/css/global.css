@@ -33,13 +33,55 @@ header{
         padding: 0;
 }
 
-.search-input{
+/* Contenedor para que los resultados se posicionen respecto al input */
+.search-wrapper {
+    position: relative;
+    width: 30%;
+    display: inline-block;
+}
+
+/* Tu input, sin tocar tu estilo */
+.search-input {
     border: 1px solid #5A9C39;
     background-color: #111;
     padding: 10px;
     color: #fafafa;
     outline: none;
 }
+
+/* Caja de resultados */
+#results {
+    position: absolute;
+    top: 100%; /* Justo debajo del input */
+    left: 0;
+    width: 100%;
+    max-height: 250px;
+    background: #111;
+    border: 1px solid #5A9C39;
+    border-top: none;
+    overflow-y: auto;
+    z-index: 999;
+    display: none; /* Se muestra solo cuando hay resultados */
+}
+
+/* Cada resultado */
+#results .result-item {
+    padding: 10px;
+    cursor: pointer;
+    color: #fafafa;
+    border-bottom: 1px solid #222;
+    transition: background 0.15s;
+}
+
+#results .result-item:last-child {
+    border-bottom: none;
+}
+
+#results .result-item:hover {
+    background: #1a1a1a;
+}
+
+
 
 .menu-links .dropdown {
     display: inline-flex;

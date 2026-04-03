@@ -126,18 +126,8 @@ router.post("/login", async (req, res) => {
     console.error("Error en /login:", err);
     res.status(500).json({ error: "Error del servidor" });
   }
+
+
 });
-
-// -------------------------
-// LOGOUT
-// -------------------------
-
-function logout(){
-  localStorage.removeItem("token");
-  window.location.href = "/index.html";
-}
-// 👉 Con JWT no hay logout en servidor
-// 👉 simplemente se borra el token en frontend
-
 
 export default router;

@@ -60,19 +60,40 @@ const input = document.getElementById("search");
 const resultsDiv = document.getElementById("results");
 
 input.addEventListener("input", async () => {
-  const query = input.value;
+  const query = input.value.trim();
 
   if (query.length < 2) {
     resultsDiv.innerHTML = "";
+    resultsDiv.style.display = "none";
     return;
   }
 
-  const res = await fetch(`/search?q=${query}`);
+  const res = await fetch(`/search?q=${encodeURIComponent(query)}`);
   const data = await res.json();
 
-  resultsDiv.innerHTML = data.map(game => `
-    <div>
-      <h3>${game.nombre}</h3>
-    </div>
-  `).join("");
+  if (!data || data.length === 0) {
+    resultsDiv.innerHTML = "";
+    resultsDiv.style.display = "none";
+    return;
+  }
+
+  resultsDiv.innerHTML = data
+    .map(
+      game => `
+        <div class="result-item">
+          ${game.nombre}
+        </div>
+      `
+    )
+    .join("");
+
+  resultsDiv.style.display = "block";
+
+  // Cerrar resultados al hacer click en un item
+  document.querySelectorAll(".result-item").forEach(item => {
+    item.addEventListener("click", () => {
+      input.value = item.textContent.trim();
+      resultsDiv.style.display = "none";
+    });
+  });
 });

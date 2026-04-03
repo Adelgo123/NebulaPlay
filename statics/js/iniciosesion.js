@@ -62,11 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const resultado = await respuesta.json();
 
-            if (respuesta.ok && resultado.userId) {
+            if (respuesta.ok && resultado.token) {
                 alert("Inicio de sesión correcto");
 
                 localStorage.setItem("userId", resultado.userId);
-                localStorage.setItem("avatar", JSON.stringify(resultado.avatar));
+                localStorage.setItem("token", resultado.token);
+
 
                 window.location.href = "./panelusuario/panelusuario.html";
             } else {
@@ -78,5 +79,25 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Error de conexión con el servidor");
         }
     });
+
+    // -------------------------
+// LOGOUT
+// -------------------------
+  const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // Eliminar token
+            localStorage.removeItem("token");
+
+            // Si guardas más datos, límpialos también
+            localStorage.removeItem("userId");
+
+            // Redirigir al inicio
+            window.location.href = "../../index.html";
+        });
+    }
 
 });
