@@ -22,12 +22,17 @@ const keyMap = {
 let cursorX = window.innerWidth / 2;
 let cursorY = window.innerHeight / 2;
 
+// webrtc-client.js
 function updateCursor(dx, dy) {
-    cursorX += dx;
-    cursorY += dy;
+    // Escalar según el tamaño del video
+    const scaleX = videoEl.videoWidth / videoEl.clientWidth;
+    const scaleY = videoEl.videoHeight / videoEl.clientHeight;
 
-    cursorX = Math.max(0, Math.min(window.innerWidth, cursorX));
-    cursorY = Math.max(0, Math.min(window.innerHeight, cursorY));
+    cursorX += dx / scaleX; // Inverso del escalado
+    cursorY += dy / scaleY;
+
+    cursorX = Math.max(0, Math.min(videoEl.clientWidth, cursorX));
+    cursorY = Math.max(0, Math.min(videoEl.clientHeight, cursorY));
 
     const cursor = document.getElementById("cursor-overlay");
     if (!cursor) return;
@@ -150,6 +155,20 @@ function setupInput(videoEl) {
         safeSend(buffer);
     }
 
+    function scaleMouse(dx, dy, videoEl) {
+        const scaleX = videoEl.videoWidth / videoEl.clientWidth;
+        const scaleY = videoEl.videoHeight / videoEl.clientHeight;
+        return { dx: dx * scaleX, dy: dy * scaleY };
+    }
+
+    // Ejemplo en tu mousemove
+    document.addEventListener("mousemove", e => {
+        if (document.pointerLockElement !== videoEl) return;
+        const { dx, dy } = scaleMouse(e.movementX, e.movementY, videoEl);
+        sendMouse(Math.round(dx), Math.round(dy));
+        updateCursor(e.movementX, e.movementY);
+    });
+
     // RESET: type 4
     function sendReset() {
         const buffer = new ArrayBuffer(1);
@@ -187,5 +206,18 @@ function setupInput(videoEl) {
         sendReset();
     });
 }
+
+const fullscreenBtn = document.getElementById("fullscreen-btn");
+const videoEl = document.getElementById("gameVideo");
+
+fullscreenBtn.addEventListener("click", async () => {
+    if (!document.fullscreenElement) {
+        await videoEl.requestFullscreen();
+        await videoEl.requestFullscreen({ navigationUI: "hide" });
+        await videoEl.requestPointerLock();
+    } else {
+        await document.exitFullscreen();
+    }
+});
 
 document.querySelector("#jugar-ahora").addEventListener("click", startGame);
