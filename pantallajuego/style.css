@@ -145,6 +145,19 @@ footer a{
     border: 1px solid #5A9C39;
 }
 
+.botones{
+    display: flex;
+}
+.botones button{
+    color: black;
+    border: none;
+    background-color: #5A9C39;
+    padding: 10px;
+    font-weight: bold;
+    margin-inline-end: 20px;
+    cursor: pointer;
+}
+
 @media (max-width:1000px) {
     ::-webkit-scrollbar{
     width: 5px;

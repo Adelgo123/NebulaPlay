@@ -3,7 +3,7 @@
 // ===============================
 
 // DataChannel para enviar inputs (requiere que 'pc' ya exista)
-const dc = pc.createDataChannel("inputs");
+/*const dc = pc.createDataChannel("inputs");
 
 dc.onopen = () => {
   console.log("🟢 DataChannel abierto (inputs)");
