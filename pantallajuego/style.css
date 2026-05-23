@@ -138,7 +138,7 @@ footer a{
 
 
 #gameVideo {
-    width: 70vw;
+    width: 50%;
     height: auto;
     object-fit: fill; /* 👈 CLAVE */
     margin: auto;
